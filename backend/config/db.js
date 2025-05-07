@@ -1,14 +1,9 @@
-// import mongoose from "mongoose";
-
-// export const connectDB = async ()=>{
-//   await mongoose.connect('mongodb+srv://VanshikaThakre:Vanshu_mongo_123@clusterone.5884z9x.mongodb.net/SipandCrunch').then(()=>console.log("DB Connection done"));
-// }
 
 import mongoose from "mongoose";
 
 export const connectDB = async () => {
   try {
-    await mongoose.connect('mongodb+srv://VanshikaThakre:Vanshu_mongo_123@clusterone.5884z9x.mongodb.net/SipandCrunch', {
+    await mongoose.connect('.env path of mongo', {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
