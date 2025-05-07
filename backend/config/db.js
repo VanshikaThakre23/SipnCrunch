@@ -1,22 +1,20 @@
-import dotenv from "dotenv";
-dotenv.config(); // Ensure this line is at the top!
+// import mongoose from "mongoose";
+
+// export const connectDB = async ()=>{
+//   await mongoose.connect('mongodb+srv://VanshikaThakre:Vanshu_mongo_123@clusterone.5884z9x.mongodb.net/SipandCrunch').then(()=>console.log("DB Connection done"));
+// }
 
 import mongoose from "mongoose";
 
-const mongoURI = process.env.MONGODB_URI; // This should correctly access the environment variable
-
 export const connectDB = async () => {
   try {
-    await mongoose.connect(mongoURI, {
+    await mongoose.connect('mongodb+srv://VanshikaThakre:Vanshu_mongo_123@clusterone.5884z9x.mongodb.net/SipandCrunch', {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-      tls: true,                        // Ensure TLS is enabled
-      tlsAllowInvalidCertificates: false // Avoid issues with self-signed certs
     });
-    console.log("✅ MongoDB connected successfully");
+    console.log("✅ MongoDB connected successfully.");
   } catch (error) {
-    console.error("❌ MongoDB connection error:", error.message);
-    process.exit(1); // Exit the app if connection fails
+    console.error("❌ MongoDB connection error:", error);
+    process.exit(1); // Optional: Exit if DB fails
   }
 };
-   

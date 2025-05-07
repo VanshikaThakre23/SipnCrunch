@@ -2,10 +2,11 @@ import React, { useContext } from 'react'
 import './Cart.css'
 import { StoreContext } from '../../context/StoreContext'
 import { useNavigate } from 'react-router-dom';
+import { assets } from '../../assets/assets';
 
 const Cart = () => {
 
-  const { cartItems, food_list,getTotalCartAmount } = useContext(StoreContext);
+  const { cartItems, food_list, getTotalCartAmount,url } = useContext(StoreContext);
 
   const navigate = useNavigate();
 
@@ -26,13 +27,13 @@ const Cart = () => {
           if (cartItems[item._id] > 0) {
             return (
               <div>
-                <div className=' cart-items-title cart-items-item'>
-                  <img src={item.image} alt="" />
+                <div className='cart-items-title cart-items-item'>
+                  <img src={url + "/images/" + item.image} alt={item.name} />
                   <p>{item.name}</p>
                   <p>Rs{item.price}</p>
                   <p>{cartItems[item._id]}</p>
                   <p>Rs{item.price * cartItems[item._id]}</p>
-                  <p onClick={()=>removeFromCart(item._id)} className='cross'>X</p>
+                  <p onClick={() => removeFromCart(item._id)} className='cross'>X</p>
                 </div>
                 <hr />
               </div>
@@ -40,38 +41,39 @@ const Cart = () => {
           }
         })}
       </div>
-<div className="cart-bottom">
-  <div className="cart-total">
-    <h2>Cart Totals</h2>
-    <div>
-      <div className="cart-total-details">
-        <p>Subtotal</p>
-        <p>Rs{getTotalCartAmount()}</p>
-      </div>
-      <hr />
-      <div className="cart-total-details">
-      <p>Delivery Fee</p>
-      <p>Rs{getTotalCartAmount()===0?0:2}</p>
-      </div>
-      <hr />
-      <div className="cart-total-details">
-        <b>Total</b>
-        <b>Rs{getTotalCartAmount()===0?0:getTotalCartAmount()+2}</b>
-      </div>
-      <button onClick={()=>navigate('/order')}>Proceed To Checkout</button>
-    </div>
-  </div>
 
-  <div className="cat-promocode">
-    <div>
-      <p>If you have a promo code ,Enter it here</p>
-      <div className="cart-promocode-input">
-        <input type="text" placeholder = 'promo code' />
-        <button>submit</button>
+      <div className="cart-bottom">
+        <div className="cart-total">
+          <h2>Cart Totals</h2>
+          <div>
+            <div className="cart-total-details">
+              <p>Subtotal</p>
+              <p>Rs{getTotalCartAmount()}</p>
+            </div>
+            <hr />
+            <div className="cart-total-details">
+              <p>Delivery Fee</p>
+              <p>Rs{getTotalCartAmount() === 0 ? 0 : 2}</p>
+            </div>
+            <hr />
+            <div className="cart-total-details">
+              <b>Total</b>
+              <b>Rs{getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 2}</b>
+            </div>
+            <button onClick={() => navigate('/order')}>Proceed To Checkout</button>
+          </div>
+        </div>
+
+        <div className="cart-promocode">
+          <div>
+            <p>If you have a promo code ,Enter it here</p>
+            <div className="cart-promocode-input">
+              <input type="text" placeholder='promo code' />
+              <button>submit</button>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
     </div>
   )
 }
