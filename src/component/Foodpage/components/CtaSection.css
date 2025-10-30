@@ -1,0 +1,166 @@
+.cta-section {
+  width: 100%;
+  height: 70vh;
+  margin-bottom: 5rem;
+  position: relative;
+  font-family: "Arial";
+}
+
+.cta-container {
+  width: 100%;
+  height: 100%;
+  background-image: url("assets/food-images/ctaBG2_1.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+}
+
+.cta-text {
+  position: absolute;
+  left: 2%;
+  top: 30%;
+  z-index: 1;
+}
+
+.cta-text h2 {
+  font-size: 1.5rem;
+  color: orange;
+  font-weight: 700;
+}
+
+.cta-text h3 {
+  font-size: 3.5rem;
+  color: #fff;
+  font-weight: 700;
+}
+
+.cta-text p {
+  font-size: 1.6rem;
+  color: red;
+  font-weight: 700;
+}
+
+.cta-btn {
+  background: rgba(238, 29, 29, 0.83);
+  color: #fff;
+  padding: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.cta-btn:hover {
+  background: #ff5722;
+  transform: scale(1.05);
+}
+
+.cta-right-img img {
+  position: absolute;
+  right: 2%;
+  z-index: 1;
+  filter: drop-shadow(3px 10px 4px rgb(10, 0, 0));
+}
+
+.cta1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.cta2 {
+  position: absolute;
+  bottom: 0;
+}
+
+.cta3 {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+}
+
+.cta4 {
+  position: absolute;
+  bottom: 20%;
+  left: 40%;
+}
+
+.cta5 {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.cta6 {
+  position: absolute;
+  right: 30%;
+}
+
+/* -------------------------------------------------- */
+/* 📱 Mobile Responsiveness for CTA Section */
+@media (max-width: 576px) {
+  .cta-section {
+    height: auto;
+    margin-bottom: 3rem;
+    margin-left: 1rem;
+    width: 85%;
+  }
+
+  .cta-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-position: center;
+    padding: 2rem 1rem;
+    text-align: center;
+  }
+
+  .cta-text {
+    position: relative;
+    left: 0;
+    top: 0;
+    transform: none;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .cta-text h2 {
+    font-size: 1.2rem;
+  }
+
+  .cta-text h3 {
+    font-size: 2rem;
+  }
+
+  .cta-text p {
+    font-size: 1.1rem;
+  }
+
+  .cta-btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  /* 📸 Handle images gracefully on small screens */
+  .cta-right-img img{
+    width: 100%;
+  }
+  .cta1,
+  .cta2,
+  .cta3,
+  .cta4,  
+  .cta5
+  {
+    position: static !important;
+    width: 100%;
+    max-width:60px;
+    margin: 1rem auto;
+    display: block;
+  }
+  .cta6{
+   position: static !important;
+    width: 100%;
+    max-width:90px;
+    /* margin: 1rem auto;
+    display: block;  */
+  }
+}

@@ -1,0 +1,28 @@
+.food {
+  padding: 40px;
+  /* background: linear-gradient(175deg,rgb(239, 235, 210),rgb(234, 133, 83)); */
+
+}
+
+#foodburg {
+  position: absolute;
+  top: 77vw;
+  left: 0px;
+  width: 9rem;
+  filter: drop-shadow(0px 8px 5px rgba(0, 0, 0, 0.5));
+}
+@media (max-width: 768px) {
+  .food {
+    padding: 20px;
+    text-align: center;
+  }
+
+  #foodburg {
+    position: relative;
+    top: 77vw;
+    left: 0;
+    width: 2rem;
+    margin: 10px auto;
+    display: block;
+  }
+}

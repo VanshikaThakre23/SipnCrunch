@@ -1,0 +1,74 @@
+
+footer a {
+    text-decoration: none;
+    transition: 0.3s;
+  }
+  
+  footer a:hover {
+    color: orange;
+  }
+  
+  .social-icons i {
+    font-size: 20px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .social-icons i:hover {
+    transform: scale(1.2);
+  }
+  
+  .underline {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .underline::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: orange;
+    left: 0;
+    bottom: -5px;
+    transition: width 0.3s ease-in-out;
+  }
+  
+  .underline:hover::after {
+    width: 100%;
+  }
+
+  /* ---------- Responsive Footer ---------- */
+@media (max-width: 768px) {
+  footer {
+    text-align: center;
+    padding: 20px 10px;
+  }
+
+  footer .row,
+  footer .col {
+    flex-direction: column !important;
+    text-align: center !important;
+  }
+
+  footer a {
+    display: block;
+    margin: 5px 0;
+    font-size: 0.9rem;
+  }
+
+  .social-icons {
+    margin-top: 10px;
+  }
+
+  .social-icons i {
+    margin: 0 8px;
+    font-size: 18px;
+  }
+
+  .underline::after {
+    bottom: -3px;
+  }
+  .form-check{
+
+display: none;  }
+}

@@ -1,0 +1,271 @@
+.orders-page {
+  padding: 7rem 2rem 3rem; /* Adjusted for fixed navbar */
+  background: #fffaf4;
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  transition: all 0.3s ease;
+}
+
+/* ================= HEADER ================= */
+.orders-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.orders-header h2 {
+  color: #198754;
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-align: center;
+  flex: 1;
+}
+
+.back-btn {
+  background: transparent;
+  border: 2px solid #198754;
+  color: #198754;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+  background: #198754;
+  color: white;
+  transform: scale(1.05);
+}
+
+/* ================= ORDERS ================= */
+.orders-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: auto;
+}
+
+.order-card {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  padding: 1.5rem;
+  gap: 1.5rem;
+  transition: all 0.3s ease;
+  border-left: 6px solid #198754;
+}
+
+.order-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(25, 135, 84, 0.2);
+}
+
+.order-card img {
+  width: 120px;
+  height: 120px;
+  border-radius: 15px;
+  object-fit: cover;
+  border: 2px solid #d4edda;
+}
+
+.order-info {
+  flex: 1;
+}
+
+.order-info h3 {
+  margin: 0;
+  font-size: 1.3rem;
+  color: #333;
+  font-weight: 600;
+}
+
+.quantity-control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 0.7rem;
+}
+
+.quantity-control button {
+  background: #198754;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background 0.3s;
+}
+
+.quantity-control button:hover {
+  background: #157347;
+}
+
+.remove-btn {
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.remove-btn:hover {
+  background: #b02a37;
+}
+
+.order-btn {
+  background: #198754;
+  color: white;
+  padding: 6px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  font-weight: 600;
+  transition: 0.3s;
+  margin: 5px;
+}
+.order-btn:hover {
+  background: #157347;
+}
+
+/* ================= CHECKOUT ================= */
+.orders-summary {
+  text-align: center;
+  margin-top: 3rem;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(25, 135, 84, 0.15);
+}
+
+.checkout-btn {
+  background: linear-gradient(90deg, #198754, #157347);
+  color: white;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.checkout-btn:hover {
+  transform: scale(1.05);
+}
+
+/* ================= WISHLIST ================= */
+.wishlist-section {
+  margin-top: 4rem;
+  text-align: center;
+}
+
+.wishlist-section h2 {
+  color: #ff9800;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.wishlist-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.wishlist-card {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(255, 152, 0, 0.15);
+  width: 270px;
+  padding: 1rem;
+  transition: 0.3s;
+}
+
+.wishlist-card:hover {
+  transform: translateY(-4px);
+}
+
+.wishlist-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.wishlist-info h3 {
+  margin: 0.5rem 0;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 992px) {
+  .orders-page {
+    padding: 6rem 1.5rem 2rem;
+  }
+
+  .orders-header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .order-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .order-card img {
+    width: 100%;
+    height: 200px;
+  }
+
+  .quantity-control {
+    justify-content: center;
+  }
+
+  .wishlist-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .wishlist-card {
+    width: 90%;
+  }
+
+  .checkout-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .orders-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .order-info h3 {
+    font-size: 1.1rem;
+  }
+
+  .wishlist-section h2 {
+    font-size: 1.6rem;
+  }
+
+  .back-btn {
+    font-size: 0.9rem;
+    padding: 5px 10px;
+  }
+}

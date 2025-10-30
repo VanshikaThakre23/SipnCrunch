@@ -1,0 +1,183 @@
+.menu-grid-container{
+  background-color: linear-gradient(125deg rgb(241, 98, 98),rgb(233, 91, 91));
+  margin: 1rem;
+}
+.menugrid-item-thumb {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  transition: transform 0.3s ease-in-out;
+}
+.menugrid-item-thumb img{
+  width: 350px;
+  height: 350px;
+  object-fit: cover;
+}
+.menugrid-item-thumb:hover {
+  transform: scale(1.05);
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 10rem;
+  left: 50%;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  z-index: 2;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+.order-now-btn {
+  background: linear-gradient(135deg, #ef1c1c, #c1240c);
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 50px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.order-now-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.3);
+}
+.icons {
+  position: absolute;
+  top: 10px;
+  margin-right: 11px;
+  right: 10px;
+  display: flex;
+  gap: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+.wishlist-icon, .cart-icon {
+  background: white;
+  padding: 9px;
+  border-radius: 50%;
+  box-shadow: 0px 4px 6px rgba(0,0,0,0.2);
+  cursor: pointer;
+  font-size: 18px;
+  transition: transform 0.2s, background 0.3s;
+}
+.wishlist-icon:hover {
+  background: #e6032c;
+  color: white;
+  transform: scale(1.2);
+}
+.cart-icon:hover {
+  background: #ffa200;
+  color: white;
+  transform: scale(1.2);
+}
+.menugrid-item-thumb:hover .overlay,
+.menugrid-item-thumb:hover .icons {
+  opacity: 1;
+}
+.menu-details {
+  text-align: center;
+  margin-top: 10px;
+  font-weight: bold;
+}
+.price {
+  color: rgb(255, 0, 0);
+  font-size: 18px;
+}
+.rating {
+  color: #ffcc00;
+  font-size: 16px;
+}
+
+.food-name {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(57, 56, 56, 0.6);
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 6px 12px;
+  border-radius: 5px;
+  opacity: 0.9;
+  width: 90%;
+  text-align: center;
+  z-index: 3;
+}
+
+
+
+
+/* ------------------------------------------------------------------------- */
+/* 📱 Mobile Responsiveness (Only Add This Part) */
+@media (max-width: 576px) {
+  .menu-grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    padding: 0.5rem;
+    margin: auto;
+  }
+
+
+  .menugrid-item-thumb img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+  }
+
+  .overlay {
+    bottom: 7rem;
+  }
+
+  .order-now-btn {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  .icons {
+    top: 8px;
+    right: 8px;
+    gap: 6px;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  .wishlist-icon,
+  .cart-icon {
+    padding: 8px;
+    font-size: 16px;
+  }
+
+  .food-name {
+    bottom: 80px;
+    font-size: 0.9rem;
+    width: 90%;
+    padding: 5px 8px;
+  }
+
+  .menu-details {
+    font-size: 0.9rem;
+  }
+
+  .price {
+    font-size: 16px;
+  }
+
+  .rating {
+    font-size: 14px;
+  }
+}
+
+@media ( min-width :577px){
+  .icons{
+    opacity: 1 !important;
+    visibility: visible !important ;
+  }
+  
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Pizzas",
+    "image": "/images/pizza1.webp",
+    "link": "foodpage.html"
+  },
+  {
+    "id": 2,
+    "name": "Chinese",
+    "image": "/images/noodle1.png",
+    "link": "foodpage.html"
+  },
+  {
+    "id": 3,
+    "name": "South Indian Food",
+    "image": "/images/southindian1.webp",
+    "link": "foodpage.html"
+  },
+  {
+    "id": 4,
+    "name": "Full Veg Thali",
+    "image": "/food-images/img4.png",
+    "link": "foodpage.html"
+  }
+]

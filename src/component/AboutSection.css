@@ -1,0 +1,139 @@
+.aboutcontainer {
+  background-image: url(assets/images/white-bg.png);
+  /* background:whitesmoke; */
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  position: relative;
+}
+
+.about-left-1 {
+  position: absolute;
+  left: 0;
+}
+
+.about-right-1 {
+  position: absolute;
+  right: 0;
+}
+
+.about-left-2 {
+  position: absolute;
+  left: 3.9%;
+  top: 12%;
+  border-left: 4px dashed #fff;
+  border-radius: 50%;
+  padding: 0.6rem;
+}
+
+.about-right-2 {
+  position: absolute;
+  right: 3.9%;
+  top: 12%;
+  border-right: 4px dashed #fff;
+  border-radius: 50%;
+  padding: 0.6rem;
+}
+
+.about-left-3 {
+  position: absolute;
+  left: 30%;
+  top: 0%;
+
+  transform: rotate(135deg);
+}
+
+.about-right-3 {
+  position: absolute;
+  right: 25%;
+  top: 55%;
+  transform: rotate(-45deg);
+}
+
+.about-center {
+  width: 600px;
+  height: auto;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  /* border: 2px solid black; */
+  padding: 2rem;
+}
+
+.about-center h2 {
+  text-align: center;
+  font-family: 'Times New Roman';
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 50px;
+  text-transform: capitalize;
+  margin-bottom: 10px;
+}
+
+.about-center p {
+  color: rgb(48, 42, 42);
+  text-align: center;
+  font-family: var(--body-font);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px;
+  margin-bottom: 45px;
+}
+
+.aboutbtn {
+  display: block;
+  margin: auto;
+  background: rgb(197, 60, 6);
+  font-size: 20px;
+  font-weight: 400;
+  color: #fff;
+  padding: 10px;
+  border: navajowhite;
+}
+
+.aboutbtn:hover {
+  background: #e6551c;
+}
+
+@media (max-width: 768px) {
+  .aboutcontainer {
+    flex-direction: column;
+    height: auto;
+    padding: 2rem 1rem;
+    background-size: cover;
+  }
+
+  .about-left-1,
+  .about-left-2,
+  .about-left-3,
+  .about-right-1,
+  .about-right-2,
+  .about-right-3 {
+    display: none;
+  }
+
+  .about-center {
+    width: 100%;
+    position: static;
+    transform: none;
+    padding: 1rem;
+  }
+
+  .about-center h2 {
+    font-size: 24px;
+    line-height: 36px;
+  }
+
+  .about-center p {
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  .aboutbtn {
+    font-size: 16px;
+    padding: 8px 15px;
+  }
+}

@@ -1,0 +1,190 @@
+.popular-deals-container {
+  height: auto;
+  width: 98%;
+  background: #fff;
+  padding: 3rem;
+  margin-top: 3rem;
+  position: relative;
+  margin: auto;
+  display: block;
+  overflow: hidden;
+  z-index: 0;
+  
+}
+
+.popularshapeimgtop {
+  position: absolute;
+  top: 0rem;
+  right: 0px;
+  z-index: 2;
+}
+.shape-wrapper {
+  position: absolute;
+  top: 1rem;
+  z-index: 1;
+  perspective: 800px; /* allows 3D motion without flipping */
+}
+
+.shapeimgtop2 {
+  width: 180px;
+  left:0%;
+  top: 0%;
+  opacity: 0.8;
+  transform: rotate(180deg);
+  transform-origin: center;
+  backface-visibility: hidden; /* prevents mirror flipping */
+}
+
+
+
+.popular-deals-container h2 {
+  text-align: center;
+  font-size: 2.1rem;
+  font-weight: bold;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+
+
+}
+
+.popular-deals-card-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+   z-index: 1;
+}
+
+.popular-deals-card {
+  width: 19%;
+  height: auto;
+  /* border: 1px solid black; */
+  padding: 1rem;
+  border-radius: 20px;
+  box-shadow: 0px 4px 54px 0px rgba(0, 0, 0, 0.08);
+  position: relative;
+  background-color: rgb(244, 235, 216);
+z-index: 1;
+}
+
+.popular-deals-card img {
+  width: 10rem;
+  border: 2px dashed red;
+  border-radius: 50%;
+  margin: auto;
+  display: block;
+  padding: 6px;
+  /* position: sticky */
+}
+
+.popular-deals-card h3 {
+  font-size: 1.2rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.popular-deals-card-content {
+  padding: 10px;
+}
+
+.star-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+}
+
+.star-container i {
+  font-size: 1rem;
+}
+
+.star-container .yellow {
+  color: rgb(255, 136, 0);
+}
+
+.star-container .white {
+  color: grey;
+}
+
+.price {
+  font-size: 1rem;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.p-d-btn {
+  background-color: rgb(255, 102, 0);
+  padding: 10px;
+  font-weight: 400;
+  font-size: 1rem;
+  margin: auto;
+  display: block;
+  color: #fff;
+  border: none;
+  width: 10rem;
+}
+
+.p-d-btn:hover {
+  background-color: rgb(255, 72, 0);
+}
+
+@media (max-width: 768px) {
+
+  /* ---------- POPULAR DEALS SECTION ---------- */
+  .popular-deals-container {
+    padding: 1.5rem 1rem;
+  }
+
+  .popular-deals-container h2 {
+    font-size: 1.8rem;
+    margin: 1.5rem 0;
+  }
+
+  .popularshapeimgtop {
+    display: block;
+    width: 5rem;
+    top:2rem;
+  }
+  .shape-wrapper{
+    top: 94rem;
+    left: 0;
+    z-index: 2;
+  }
+
+  .shapeimgtop2{
+    width: 6rem;
+    top: 2rem;
+     z-index: 2;
+  }
+
+  .popular-deals-card-wrapper {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .popular-deals-card {
+    width: 90%;
+    margin: auto;
+  }
+
+  .popular-deals-card img {
+    width: 7rem;
+  }
+
+  .popular-deals-card h3 {
+    font-size: 1rem;
+  }
+
+  .price {
+    font-size: 0.9rem;
+  }
+
+  .p-d-btn {
+    width: 8rem;
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+}

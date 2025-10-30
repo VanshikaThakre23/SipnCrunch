@@ -1,0 +1,182 @@
+/* ===== Offer Container ===== */
+.dr-offercontainer2 {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin: 2rem 0;
+  padding: 0 1rem;
+}
+
+/* ===== Individual Offer Card ===== */
+.dr-offer-card {
+  height: 270px;
+  padding: 20px;
+  margin: 1rem;
+  border-radius: 12px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+  transition: all 0.4s ease;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex: 1 1 280px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  overflow: hidden;
+}
+
+/* ===== Hover Effect ===== */
+.dr-offer-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* ===== Overlay Gradient (for text visibility) ===== */
+.dr-offer-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.4), transparent 60%);
+  border-radius: 12px;
+  transition: opacity 0.3s ease;
+}
+
+.dr-offer-card:hover::after {
+  opacity: 0.6;
+}
+
+/* ===== Text Content ===== */
+.dr-offer-card-content2 {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  max-width: 200px;
+  text-align: left;
+  padding-left: 10px;
+}
+
+.dr-offer-card-content2 h6 {
+  font-size: 13px;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  color: #ffce00;
+}
+
+.dr-offer-card-content2 h3 {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.2;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+/* ===== Button ===== */
+.dr-offer-btn {
+  background-color: #fff;
+  font-size: 16px;
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.dr-offer-btn:hover {
+  background-color: #e0502c;
+  color: #fff;
+  transform: scale(1.05);
+  border-radius: 10px;
+}
+
+/* ===== Background Images ===== */
+.dr-offer-card1 {
+  background-image: url("/assets/drink-images/home_3_banner_1_1.jpg");
+}
+
+.dr-offer-card2 {
+  background-image: url("/assets/drink-images/home_3_banner_2.jpg");
+}
+
+.dr-offer-card3 {
+  background-image: url("/assets/drink-images/home_3_banner_3.jpg");
+}
+
+/* =========================
+   📱 RESPONSIVE SECTION
+========================= */
+
+/* Tablet */
+@media (max-width: 992px) {
+  .dr-offer-card {
+    height: 230px;
+    flex: 1 1 45%;
+  }
+
+  .dr-offer-card-content2 h3 {
+    font-size: 20px;
+  }
+
+  .dr-offer-card-content2 h6 {
+    font-size: 12px;
+  }
+
+  .dr-offer-btn {
+    font-size: 14px;
+    padding: 8px 18px;
+  }
+  .dr-offer-btn:hover {
+  background-color: #e0502c;
+  color: #fff;
+  transform: scale(1.05);
+  border-radius: 10px;
+}
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .dr-offercontainer2 {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .dr-offer-card {
+    width: 90%;
+    height: 220px;
+    flex: none;
+    margin: 0.8rem 0;
+  }
+
+  .dr-offer-card-content2 {
+    text-align: center;
+    padding-left: 0;
+  }
+
+  .dr-offer-card-content2 h3 {
+    font-size: 18px;
+  }
+
+  .dr-offer-btn {
+    font-size: 13px;
+    padding: 8px 16px;
+  }
+
+  .dr-offer-btn:hover {
+  background-color: #e0502c;
+  color: #fff;
+  transform: scale(1.05);
+  border-radius: 10px;
+}
+  .dr-offer-card::after {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.45), transparent);
+  }
+}

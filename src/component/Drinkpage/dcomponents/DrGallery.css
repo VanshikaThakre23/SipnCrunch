@@ -1,0 +1,282 @@
+/* =========================
+   🥤 DRINK GALLERY SECTION
+   (Scoped styles with dr- prefix)
+========================= */
+
+.dr-pickfav {
+  padding: 2rem 1rem 4rem;
+  box-sizing: border-box;
+  font-family: "Poppins", Arial, sans-serif;
+  background-color: #fafdfb;
+}
+
+/* ===== Container ===== */
+.dr-gallery-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.dr-gallery-title {
+  font-size: 2rem;
+  color: #198754; /* Green theme */
+  margin-bottom: 1rem;
+  border-bottom: 2px dotted #dff5e0;
+  display: inline-block;
+  padding-bottom: 0.6rem;
+  font-weight: 700;
+}
+
+/* ===== Filter Buttons ===== */
+.dr-gallery-cats {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 1rem 0 1.6rem;
+  padding: 0;
+  list-style: none;
+}
+
+.dr-filter {
+  cursor: pointer;
+  padding: 6px 16px;
+  font-weight: 700;
+  border-radius: 999px;
+  background: transparent;
+  border: 2px solid transparent;
+  transition: all 0.22s ease;
+  color: #333;
+}
+
+.dr-filter:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
+}
+
+.dr-active {
+  background: linear-gradient(90deg, #e6f7ee, #d4f0db);
+  border-color: #bfe6c8;
+  color: #0f5132;
+}
+
+/* ===== Product Grid ===== */
+.dr-product {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  justify-content: center;
+  align-items: stretch;
+}
+
+/* ===== Individual Card ===== */
+.dr-itembox {
+  width: 280px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.dr-itembox:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+/* ===== Image Container ===== */
+.dr-img-container {
+  position: relative;
+  padding: 12px;
+}
+
+.dr-item-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+  background: #fafafa;
+  display: block;
+  transition: transform 0.25s ease;
+}
+
+.dr-itembox:hover .dr-item-img {
+  transform: scale(1.05);
+}
+
+/* ===== Icons ===== */
+.dr-icons {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  gap: 10px;
+  z-index: 20;
+}
+
+.dr-wishlist-icon,
+.dr-cart-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  font-size: 16px;
+  color: #777070;
+  transition: transform 0.18s ease, background 0.18s ease, color 0.18s ease;
+}
+
+/* Hover states - green theme for cart, red for wishlist */
+.dr-wishlist-icon:hover {
+  background: #e53935;
+  color: #fff;
+  transform: scale(1.12);
+}
+
+.dr-cart-icon:hover {
+  background: #ffa200;
+  color: #fff;
+  transform: scale(1.12);
+}
+
+/* ===== Text Content ===== */
+.dr-item-name {
+  margin: 0.7rem 0 0.4rem;
+  font-size: 1rem;
+  color: #222;
+  font-weight: 600;
+}
+
+/* ===== Price / Add Button ===== */
+.dr-item-button {
+  margin: 0.8rem auto 1rem;
+  background: linear-gradient(90deg, #ffd89a, #ffa200);
+  color: #fff;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 22px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.18s ease;
+}
+
+.dr-item-button:hover {
+  transform: translateY(-3px);
+}
+
+/* =========================
+   📱 RESPONSIVE SECTION
+========================= */
+
+/* Tablet */
+@media (max-width: 900px) {
+  .dr-itembox {
+    width: 45%;
+  }
+
+  .dr-item-img {
+    height: 210px;
+  }
+
+  .dr-gallery-title {
+    font-size: 1.8rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 520px) {
+  .dr-itembox {
+    width: 92%;
+  }
+
+  .dr-item-img {
+    height: 200px;
+  }
+
+  .dr-icons {
+    top: 10px;
+    right: 10px;
+  }
+
+  .dr-wishlist-icon,
+  .dr-cart-icon {
+    width: 34px;
+    height: 34px;
+    font-size: 15px;
+  }
+
+  .dr-gallery-title {
+    font-size: 1.6rem;
+  }
+
+  .dr-item-name {
+    font-size: 0.9rem;
+  }
+
+  /* --- Gallery Button with Smooth Effects --- */
+
+.dr-item-button {
+  position: relative;
+  margin: 0.8rem auto 1rem;
+  background: linear-gradient(90deg, #ffd89a, #ffa200);
+  color: #fff;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 25px;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 12px rgba(255, 162, 0, 0.35);
+}
+
+/* Soft lift and glow effect */
+.dr-item-button:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(255, 162, 0, 0.45);
+}
+
+/* Press down animation */
+.dr-item-button:active {
+  transform: scale(0.95);
+  box-shadow: 0 3px 10px rgba(255, 162, 0, 0.4);
+}
+
+/* Ripple light effect */
+.dr-item-button::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease, opacity 0.5s ease;
+  opacity: 0;
+  z-index: 0;
+}
+
+.dr-item-button:hover::before {
+  width: 280%;
+  height: 280%;
+  opacity: 0.1;
+}
+
+/* Text stays above ripple */
+.dr-item-button span {
+  position: relative;
+  z-index: 1;
+}
+
+}

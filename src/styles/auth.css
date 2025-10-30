@@ -1,0 +1,111 @@
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  background: #fff5e6;
+  font-family: "Poppins", sans-serif;
+}
+
+.auth-card {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 3rem 2.5rem;
+  width: 400px;
+  text-align: center;
+  animation: fadeIn 0.6s ease;
+}
+
+.auth-card h2 {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #222;
+}
+
+.auth-card p {
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+.auth-card form input,
+.auth-card form textarea {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  transition: all 0.2s ease;
+  font-size: 0.95rem;
+}
+
+.auth-card form input:focus,
+.auth-card form textarea:focus {
+  outline: none;
+  border-color: #ff914d;
+  box-shadow: 0 0 5px rgba(255, 145, 77, 0.3);
+}
+
+.auth-card button {
+  background: #ff914d;
+  color: white;
+  font-weight: 600;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.auth-card button:hover {
+  background: #ff6f00;
+}
+
+.error-msg {
+  color: #ff4141;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.switch-text {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.switch-text a {
+  color: #ff6f00;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.switch-text a:hover {
+  text-decoration: underline;
+}
+
+.btn-link {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #ff6f00;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.btn-link:hover {
+  text-decoration: underline;
+}
+
+.profile-card p {
+  text-align: left;
+  margin: 0.4rem 0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

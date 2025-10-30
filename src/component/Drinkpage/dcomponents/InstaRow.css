@@ -1,0 +1,45 @@
+.instagallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.singleinstaimg {
+    width: 260px;
+    height: 240px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.instahoverimg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+    display: block;
+}
+
+.singleinstaimg:hover img {
+    transform: scale(1.1);
+}
+
+.insta-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 2rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    background: #716c6c;
+    padding:0.5rem 1rem;
+    border-radius:10rem;
+    
+}
+
+.singleinstaimg:hover .insta-icon {
+    opacity: 1;
+}
