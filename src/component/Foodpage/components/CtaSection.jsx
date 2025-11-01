@@ -9,7 +9,7 @@ const CtaSection = () => {
           <h2>Welcome Foodies</h2>
           <h3>Today's Special Food</h3>
           <p>Limited Time Offer</p>
-          <button type="submit" className="cta-btn">ORDER NOW</button>
+          <button type="submit" className="cta-btn">GO ORDER NOW</button>
         </div>
 
         <div className="cta-right-img">
@@ -25,6 +25,7 @@ const CtaSection = () => {
           <img className="cta6" src="assets/food-images/ctaShape2_7.png" alt="" />
         </div>
       </div>
+      
     </section>
   );
 };

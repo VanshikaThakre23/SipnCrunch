@@ -193,3 +193,65 @@
     font-size: 12px;
   }
 }
+
+
+
+/* --- Dropdown + Button Styling --- */
+.search-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 1.5rem;
+}
+
+.search-dropdown {
+  background-color: #fff;
+  color: #333;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  outline: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  width: 14rem;
+}
+
+.search-dropdown:hover {
+  background-color: #f9e7c1;
+}
+
+.search-dropdown:focus {
+  box-shadow: 0 0 5px #f1a936;
+}
+
+.select-btn{
+background-color: rgb(241, 51, 51);
+  font-size: 17px;
+  color: #fff;
+  border: none;
+  padding: 9px 20px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.select-btn:hover {
+  background-color: #ff5722;
+  border-radius: 20px;
+}
+
+@media (max-width: 768px) {
+  .search-container {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .search-dropdown {
+    width: 80%;
+  }
+
+  .cta-btn {
+    width: 80%;
+  }
+}

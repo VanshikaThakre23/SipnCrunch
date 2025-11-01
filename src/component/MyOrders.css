@@ -16,7 +16,7 @@
 }
 
 .orders-header h2 {
-  color: #198754;
+  color: #0e6e41;
   font-size: 1.8rem;
   font-weight: 700;
   text-align: center;
@@ -140,6 +140,10 @@
   background: #157347;
 }
 
+.empty-msg{
+  font-size: 1.7rem;
+  text-align: center;
+}
 /* ================= CHECKOUT ================= */
 .orders-summary {
   text-align: center;

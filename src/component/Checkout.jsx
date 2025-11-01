@@ -37,6 +37,9 @@ const Checkout = () => {
     <>
       <Navbar />
       <div className="checkout-page">
+        <button className="back-btn" onClick={() => navigate(-1)}>
+            ← Back
+          </button>
         <h2>Checkout</h2>
 
         <div className="checkout-container">

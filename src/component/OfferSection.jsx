@@ -26,7 +26,7 @@ const OfferSection = () => {
                             <h6>ON THIS WEEK</h6>
                             <h3>MUST BUY COMBO </h3>
                             <p>#Limited Time Offer</p>
-                            <button className="offer1-card-btn" type="button">Order Now</button>
+                            <button className="offer1-card-btn" type="button">Go Order Now</button>
                         </div>
                         <div className="offer-card-thumb">
                             <img className="thumbimg" src="/assets/images/offerThumb1.png" alt="" />
@@ -41,7 +41,7 @@ const OfferSection = () => {
                             <h6>ON THIS WEEK</h6>
                             <h3>MOST ORDERED BURGER</h3>
                             <p>#Limited Time Offer</p>
-                            <button className="offer1-card-btn" type="button">Order Now</button>
+                            <button className="offer1-card-btn" type="button"> Go Order Now</button>
                         </div>
                         <div className="offer-card-thumb">
                             <img className="thumbimg" src="/assets/images/offerThumb1_2.png" alt="" />
@@ -56,7 +56,7 @@ const OfferSection = () => {
                             <h6>#SipNcruch</h6>
                             <h3>SPECIAL CHICKEN ROLL</h3>
                             <p>#Limited Time Offer</p>
-                            <button className="offer1-card-btn" type="button">Order Now</button>
+                            <button className="offer1-card-btn" type="button">Go Order Now</button>
                         </div>
                         <div className="offer-card-thumb">
                             <img className="thumbimg" src="/assets/images/offerThumb1_3.png" alt="" />

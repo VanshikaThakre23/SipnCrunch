@@ -26,6 +26,12 @@ const drinksData = [
   { id: 10, name: "Mixed Fruit Shake", category: "shakes", price: 100, img: "assets/drink-images/s_1.webp" },
   { id: 11, name: "Berry Bliss", category: "colddrinks", price: 85, img: "assets/drink-images/s_4.webp" },
   { id: 12, name: "Mango Lassi", category: "colddrinks", price: 90, img: "assets/drink-images/mango-lassi-.png" },
+  { id: 13, name: "Cookie Monster Shake", category: "shakes", price: 100, img: "assets/drink-images/monstershake.png" },
+  { id: 14, name: "Classic Strawberry Milkshake", category: "shakes", price: 100, img: "assets/drink-images/Classic Strawberry Milkshake.webp" },
+  { id: 16, name: "Fanta", category: "colddrinks", price: 90, img: "assets/drink-images/fanta.jpg" },
+  { id: 12, name: "Fruit Bug Cocktail", category: "colddrinks", price: 90, img: "assets/drink-images/fruitcocktail.jpg" },
+  { id: 15, name: "Strawberry Smoothie", category: "smoothies", price: 90, img: "assets/drink-images/strawberrysmoothie.png" },
+
 ];
 
 const categories = ["juices", "shakes", "colddrinks", "smoothies"];
@@ -53,7 +59,7 @@ const DrGallery = () => {
   return (
     <>
       <section className="dr-pickfav" id="J&S">
-        <div className="dr-gallery-container">
+        <div className="dr-gallery-container" id="smoothie">
           <h2 className="dr-gallery-title">Pick Your Favourite Drink</h2>
 
           <ul className="dr-gallery-cats">

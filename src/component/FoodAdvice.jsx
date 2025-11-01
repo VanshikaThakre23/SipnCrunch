@@ -41,8 +41,8 @@ const FoodAdvice = () => {
     // Active
     else if (activityLevel === "active" && weight <= 45) {
       newAdvice =
-        "Tu active hai, par patla bhi! Thoda protein le, anda kha, fish le, roti khayega kya?";
-      newImage1 = "assets/images/panner+roti.webp";
+        "Tu active hai, par patla bhi! Thoda protein le, anda kha,paneer roti khayega kya?";
+      newImage1 = "assets/images/pannerroti.webp";
       newImage2 = "assets/images/peanut-butter-shake.png";
     } else if (activityLevel === "active" && weight > 45 && weight <= 55) {
       newAdvice =
@@ -67,11 +67,17 @@ const FoodAdvice = () => {
         "Ekdum zabardast fitness hai! Bas high-protein aur energy wale khane le.";
       newImage1 = "assets/images/chicken-curry1.jpg";
       newImage2 = "assets/images/peanut-butter-shake.png";
-    } else if (activityLevel === "very-active" && weight > 55) {
+    } else if (activityLevel === "very-active" && weight > 55 && weight <= 90) {
       newAdvice =
-        "Tu bahut active hai, par phir bhi weight badh raha hai! Diet pe dhyan de, lean protein le.";
+        "Ye Tu bahut active hai, par phir bhi weight badh raha hai! Diet pe dhyan de, lean protein le.";
       newImage1 = "assets/images/leanprotein.png";
       newImage2 = "assets/images/mango-lassi-.png";
+    }
+    else if (activityLevel === "very-active" && weight > 90) {
+      newAdvice =
+        "Ooo MYYY Gwwwaad Ye bhi koi weight hai, Exercise kr bhai.";
+      newImage1 = "assets/images/runner.webp";
+      newImage2 = "assets/images/weightloss.jpg";
     }
 
     // Update state

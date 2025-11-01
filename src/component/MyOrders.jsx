@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useOrders } from "../context/OrderContext";
 import { useWishlist } from "../context/WishlistContext";
 import { useNavigate } from "react-router-dom";
@@ -12,14 +12,33 @@ const MyOrders = () => {
   const { wishlist, removeFromWishlist } = useWishlist();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    console.log("✅ MyOrders component mounted successfully");
-  }, []);
+  // 🌟 Step 1: Add state for random pickup line
+  const [pickupLine, setPickupLine] = useState("");
 
-  // 🧮 Helper function to safely parse price
+  // 🌟 Step 2: List of pickup lines
+  const pickupLines = [
+    "Your cart’s feeling lonely — add something spicy! 🌶️",
+    "Even your cart misses you… feed it some love ❤️",
+    "An empty cart? That’s a heartbreak waiting to happen 💔",
+    "Your cravings called — they want a reunion! 🍕",
+    "No items yet? Let's change that — it's shopping o’clock 🛍️",
+    "Cart’s empty but your appetite isn’t 😉",
+    "This cart feels lighter than my Monday motivation ☕",
+    "Add some flavor — your cart deserves better! 🍔",
+    "No orders yet, but hey — that just means more room for fun! 🎉",
+  ];
+
+  // 🌟 Step 3: Pick a random one when cart is empty
+  useEffect(() => {
+    if (orders.length === 0) {
+      const random = Math.floor(Math.random() * pickupLines.length);
+      setPickupLine(pickupLines[random]);
+    }
+  }, [orders]);
+
   const parsePrice = (price) => {
     if (typeof price === "string") {
-      const numeric = price.replace(/[^\d.]/g, ""); // remove Rs. or spaces
+      const numeric = price.replace(/[^\d.]/g, "");
       return parseFloat(numeric) || 0;
     }
     return Number(price) || 0;
@@ -28,7 +47,6 @@ const MyOrders = () => {
   return (
     <>
       <Navbar />
-
       <div className="orders-page">
         {/* ---------- Header ---------- */}
         <div className="orders-header">
@@ -40,7 +58,7 @@ const MyOrders = () => {
 
         {/* ---------- Orders Section ---------- */}
         {orders.length === 0 ? (
-          <p className="empty-msg">No orders yet!</p>
+          <p className="empty-msg">{pickupLine}</p>  
         ) : (
           <div className="orders-container">
             {orders.map((item) => (
@@ -70,7 +88,6 @@ const MyOrders = () => {
               <button className="checkout-btn" onClick={() => navigate("/checkout")}>
                 Proceed to Checkout
               </button>
-
             </div>
           </div>
         )}

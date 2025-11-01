@@ -1,4 +1,5 @@
-import React from "react";
+import { useEffect} from "react";
+import { useLocation  } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { showToast } from "../../../utils/toast";
 import "react-toastify/dist/ReactToastify.css";
@@ -9,6 +10,17 @@ import "./MenuGridSection.css";
 const MenuGridSection = () => {
   const { addToOrders } = useOrders();
   const { addToWishlist } = useWishlist();
+  const location = useLocation(); // ✅ hook should be at top level
+
+  // ✅ Scroll to section if hash present in URL
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.querySelector(location.hash);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+  }, [location]);
 
   const menuItems = [
     { id: 1, name: "MAHARAJA BURGER", img: "assets/food-images/dishes3_1.jpg", price: "Rs.149" },
@@ -37,7 +49,7 @@ const MenuGridSection = () => {
 
   return (
     <>
-      <section className="menu-grid-section">
+      <section className="menu-grid-section" id="burger">
         <div className="menu-grid-container">
           <h2 className="menu-grid-title text-center mb-4">Our Delicious Menu</h2>
 
@@ -62,7 +74,7 @@ const MenuGridSection = () => {
                       >
                         Order Now
                       </button>
-                    </div>
+                    </div> 
 
                     <div className="icons">
                       <i

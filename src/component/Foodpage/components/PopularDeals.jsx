@@ -1,5 +1,8 @@
 import React, { useEffect } from "react";
 import gsap from "gsap";
+import { ToastContainer } from "react-toastify";
+import { showToast } from "../../../utils/toast";
+import "react-toastify/dist/ReactToastify.css";
 import { useOrders } from "../../../context/OrderContext";
 
 import "./PopularDeals.css";
@@ -47,10 +50,10 @@ const PopularDeals = () => {
 
   const { addToOrders } = useOrders();
 
-  const handleOrderClick = (item) => {
-    addToOrders(item);
-    // alert(`${item.name} added to your orders!`);
-  };
+   const handleOrder = (item) => {
+      addToOrders(item);
+      showToast(`${item.name} added to cart 🛒`, "success");
+    };
 
 useEffect(() => {
   const t1 = gsap.from(".popularshapeimgtop", {
@@ -115,7 +118,7 @@ useEffect(() => {
               <button
                 type="button"
                 className="p-d-btn"
-                onClick={() => handleOrderClick(item)}
+                 onClick={() => handleOrder(item)}
               >
                 ORDER NOW
               </button>
@@ -124,6 +127,11 @@ useEffect(() => {
           ))}
         </div>
       </div>
+
+
+      {/* Toast Container */}
+      <ToastContainer />
+
     </section>
   );
 };

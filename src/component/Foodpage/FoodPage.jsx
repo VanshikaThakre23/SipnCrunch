@@ -21,6 +21,7 @@ const FoodPage = () => {
       <FoodMenuDeals />
       <MenuGridSection />
       <CtaSection2 />
+ 
       
     </>
   );

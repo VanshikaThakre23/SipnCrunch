@@ -84,10 +84,13 @@ const FoodHeader = () => {
             <div className="swiper-slide">
               <div className="text-content">
                 <h2>WELCOME TO SIPNCRUNCH</h2>
-                <h3>SPICY FRIED NOODLES</h3>
+                <h3>Veg Thali Loaded</h3>
                 <button type="submit" className="swiper-text-btn">Order Now</button>
               </div>
-              <img className="hover-img" src="/assets/food-images/bannerThumb2_2.png" alt="Spicy Fried Noodles" />
+              {/* <img className="hover-img" src="/assets/food-images/bannerThumb2_2.png" alt="Spicy Fried Noodles" /> */}
+              <img className="hover-img" src="/assets/food-images/vegloaded.png" alt="Spicy Fried Noodles" />
+              
+              
             </div>
           </SwiperSlide>
 
