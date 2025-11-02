@@ -1,4 +1,29 @@
-# Logs
+# ----------------------------
+# 🚀 Core Dependencies
+# ----------------------------
+node_modules/
+dist/
+dist-ssr/
+build/
+
+# ----------------------------
+# ⚙️ Environment & Config
+# ----------------------------
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# ----------------------------
+# 🧪 Test & Coverage
+# ----------------------------
+coverage/
+*.lcov
+
+# ----------------------------
+# 🗂️ Logs
+# ----------------------------
 logs
 *.log
 npm-debug.log*
@@ -7,18 +32,20 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
-
-# Editor directories and files
+# ----------------------------
+# 🧑‍💻 Editor & System Files
+# ----------------------------
 .vscode/*
 !.vscode/extensions.json
-.idea
+.idea/
 .DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+
+# ----------------------------
+# 📦 Misc
+# ----------------------------
+*.local
