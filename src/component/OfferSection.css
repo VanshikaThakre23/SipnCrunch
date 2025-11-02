@@ -9,7 +9,8 @@
 }
 
 .offer-card {
-  background-image: url(assets/images/offerBG1_1.jpg);
+background-image: url("/assets/images/offerBG1_1.jpg");
+
   background-size: cover;
   background-position: center;
   height: 270px;

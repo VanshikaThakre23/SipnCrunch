@@ -1,2 +1,2 @@
 # SipnCrunch
-A restaurant website built using React (frontend).
+# A restaurant website built using React (frontend).
