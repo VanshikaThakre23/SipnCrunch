@@ -25,7 +25,7 @@ const Hero = () => {
         <div className="search-container">
           <select
             className="search-dropdown"
-            onChange={(e) => {
+            onChange={(e) => { 
               const value = e.target.value;
               if (!value) return;
 

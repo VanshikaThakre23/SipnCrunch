@@ -1,17 +1,19 @@
 import React, { useEffect, useRef } from "react";
-import { useLocation } from "react-router-dom";  // ✅ Correct import
+import { useLocation } from "react-router-dom";
 import { useOrders } from "../../../context/OrderContext";
-import { ToastContainer } from "react-toastify";
-import { showToast } from "../../../utils/toast";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./FoodMenuDeals.css";
 
 const FoodMenuDeals = () => {
   const centerImgRef = useRef(null);
   const { addToOrders } = useOrders();
-  const location = useLocation(); // ✅ hook should be at top level
+  const location = useLocation();
 
-  // ✅ Scroll to section if hash present in URL
+  // Keep one toast active for cart notifications
+  const activeCartToast = useRef(null);
+
+  // Scroll to section if URL has a hash
   useEffect(() => {
     if (location.hash) {
       const element = document.querySelector(location.hash);
@@ -21,9 +23,9 @@ const FoodMenuDeals = () => {
     }
   }, [location]);
 
-  // ✅ Handle image click change
+  // Handle changing the center image on thumbnail click
   useEffect(() => {
-    const menuThumbnails = document.querySelectorAll(".menu-item-thumb img");
+    const thumbnails = document.querySelectorAll(".menu-item-thumb img");
 
     const handleClick = (e) => {
       if (centerImgRef.current) {
@@ -32,26 +34,47 @@ const FoodMenuDeals = () => {
       }
     };
 
-    menuThumbnails.forEach((thumbnail) => {
-      thumbnail.addEventListener("click", handleClick);
-    });
-
-    return () => {
-      menuThumbnails.forEach((thumbnail) => {
-        thumbnail.removeEventListener("click", handleClick);
-      });
-    };
+    thumbnails.forEach((img) => img.addEventListener("click", handleClick));
+    return () => thumbnails.forEach((img) => img.removeEventListener("click", handleClick));
   }, []);
 
-  // ✅ Order logic
+  // Handle "Order Now" click
   const handleOrder = () => {
+    if (!centerImgRef.current) return;
+
     const selectedItem = {
+      id: centerImgRef.current.alt.trim().toLowerCase().replace(/\s+/g, "_"),
       name: centerImgRef.current.alt || "Food Item",
       img: centerImgRef.current.src,
       price: "Rs.130",
     };
-    addToOrders(selectedItem);
-    showToast(`${selectedItem.name} added to cart 🛒`, "success");
+
+    // Result from context (should return "added" or "updated")
+    const result = addToOrders(selectedItem);
+
+    // Dismiss any active toast before showing a new one
+    if (activeCartToast.current) {
+      toast.dismiss(activeCartToast.current);
+    }
+
+    // Show one clean toast message
+    if (result === "updated") {
+      activeCartToast.current = toast.info(`Quantity updated for ${selectedItem.name} 🔁`, {
+        position: "top-right",
+        autoClose: 2000,
+        closeOnClick: true,
+        draggable: true,
+        theme: "colored",
+      });
+    } else {
+      activeCartToast.current = toast.success(`${selectedItem.name} added to cart 🛒`, {
+        position: "top-right",
+        autoClose: 2000,
+        closeOnClick: true,
+        draggable: true,
+        theme: "colored",
+      });
+    }
   };
 
   return (
@@ -107,8 +130,12 @@ const FoodMenuDeals = () => {
 
               {/* Center Column */}
               <div className="menu-center">
-                <img ref={centerImgRef} src="assets/food-images/menuThumb3_1.jpg" alt="Delicious Pasta" />
-                <button type="submit" onClick={handleOrder}>
+                <img
+                  ref={centerImgRef}
+                  src="assets/food-images/menuThumb3_1.jpg"
+                  alt="Delicious Pasta"
+                />
+                <button type="button" onClick={handleOrder}>
                   ORDER NOW
                 </button>
               </div>
@@ -158,8 +185,6 @@ const FoodMenuDeals = () => {
           </div>
         </div>
       </div>
-
-      <ToastContainer />
     </section>
   );
 };

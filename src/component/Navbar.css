@@ -126,35 +126,62 @@ body {
 
 
   .navbar-toggler {
-    display: block;
-    margin: auto;
-    border: none;
-    border-radius: 20%;
-    background: transparent;
-    font-size: 1.2rem;
-   background-color: #db9627;
-   padding: 0.5;
-  }
+  display: block;
+  margin-right: 1rem;
+  border: none;
+  border-radius: 50%;
+  background: #e8e5e1;
+  font-size: 1rem;
+  color: #e9e1d5;
+  padding: 0.5rem; /* fixed invalid value */
+}
 
-  .navbar-collapse {
-    background-color: #222;
-    text-align: center;
-    padding: 1rem 0;
-    animation: fadeInDown 0.3s ease-in-out;
-  }
+.navbar-collapse {
+  background-color: #5d5a5a;
+  padding: 0rem 0;
+  margin-top: 7.5rem;
+  margin-left: 0;
+  position: fixed;
+  top: 0;
+  right: -100%; /* 🔹 start hidden off-screen to the right */
+  width: 80%; /* adjust as needed */
+  border-bottom-left-radius: 50%;
+  border-top-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+   border-top-right-radius: 50%;
+  height: auto;
+  transition: right 0.4s ease-in-out; /* 🔹 animate from right side */
+  z-index: 999;
+}
 
-  .navbar-nav .nav-link {
-    color: rgb(160, 198, 7) !important;
-    display: block;
-    margin: 10px 0;
-  }
+/* When navbar is toggled open */
+.navbar-collapse.show {
+  right: 0; /* 🔹 slides in from right */
+}
 
-  .custom-dropdown {
-    width: 100%;
-    background-color: #333;
-  }
+/* Nav links inside mobile menu */
+.navbar-nav {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centers all links horizontally */
+}
 
-  .menulink{
-    display: none;
-  }
+.navbar-nav .nav-link {
+  color: rgb(249, 250, 245) !important;
+  display: block;
+  margin: 10px 0;
+  text-align: center;
+}
+
+/* Dropdown style inside mobile */
+.custom-dropdown {
+  width: 100%;
+  background-color: #333;
+}
+
+/* Hide certain links on mobile */
+.menulink {
+  /* add responsive logic here if needed */
+}
 }

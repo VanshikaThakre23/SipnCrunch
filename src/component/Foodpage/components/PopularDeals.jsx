@@ -129,8 +129,6 @@ useEffect(() => {
       </div>
 
 
-      {/* Toast Container */}
-      <ToastContainer />
 
     </section>
   );
