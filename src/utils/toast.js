@@ -1,14 +1,12 @@
-// src/utils/toast.js
 import { toast } from "react-toastify";
 
-// Prevents duplicate toasts
 let lastMessage = "";
 
 export const showToast = (message, type = "info") => {
-  if (lastMessage === message) return; // avoid duplicates
-
+  if (lastMessage === message) return; // prevent duplicate same text
   lastMessage = message;
-  toast[type](message, {
+
+  const options = {
     position: "top-center",
     autoClose: 1800,
     hideProgressBar: false,
@@ -17,6 +15,23 @@ export const showToast = (message, type = "info") => {
     draggable: true,
     theme: "colored",
     style: { fontWeight: "500", fontSize: "1rem" },
-    onClose: () => (lastMessage = ""), // reset after toast closes
-  });
+    onClose: () => {
+      lastMessage = ""; // reset tracker once toast closes
+    },
+  };
+
+  switch (type) {
+    case "success":
+      toast.success(message, options);
+      break;
+    case "error":
+      toast.error(message, options);
+      break;
+    case "warn":
+      toast.warn(message, options);
+      break;
+    case "info":
+    default:
+      toast.info(message, options);
+  }
 };

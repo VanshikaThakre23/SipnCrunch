@@ -14,28 +14,32 @@ export const OrderProvider = ({ children }) => {
   }, [orders]);
 
   // ✅ Add item to orders
-  const addToOrders = (item) => {
-    const numericPrice =
-      typeof item.price === "string"
-        ? parseFloat(item.price.replace("Rs.", "").trim())
-        : Number(item.price);
+const addToOrders = (item) => {
+  const numericPrice =
+    typeof item.price === "string"
+      ? parseFloat(item.price.replace("Rs.", "").trim())
+      : Number(item.price);
 
-    setOrders((prevOrders) => {
-      const existing = prevOrders.find((order) => order.id === item.id);
+  let action = "added";
 
-      if (existing) {
-        // if item already exists, increase quantity
-        return prevOrders.map((order) =>
-          order.id === item.id
-            ? { ...order, quantity: (order.quantity || 1) + 1 }
-            : order
-        );
-      } else {
-        // else add new one
-        return [...prevOrders, { ...item, price: numericPrice, quantity: 1 }];
-      }
-    });
-  };
+  setOrders((prevOrders) => {
+    const existing = prevOrders.find((order) => order.id === item.id);
+    if (existing) {
+      action = "updated";
+      return prevOrders.map((order) =>
+        order.id === item.id
+          ? { ...order, quantity: (order.quantity || 1) + 1 }
+          : order
+      );
+    } else {
+      return [...prevOrders, { ...item, price: numericPrice, quantity: 1 }];
+    }
+  });
+
+  return action; // ✅ tell caller what happened
+};
+
+
 
   // ✅ Remove item
   const removeFromOrders = (id) => {
