@@ -23,7 +23,7 @@ const CtaSection = () => {
           <img className="cta4" src="assets/food-images/ctaShape2_6.png" alt="" />
           <img className="cta5" src="assets/food-images/popularDishesShape1_1.png" alt="" />
           <img className="cta6" src="assets/food-images/ctaShape2_7.png" alt="" />
-        </div>
+        </div> 
       </div>
       
     </section>
