@@ -17,6 +17,7 @@ import Footer from "./component/Footer";
 import FoodPage from "./component/Foodpage/FoodPage";
 import DrinkPage from "./component/Drinkpage/DrinkPage";
 import MyOrders from "./component/MyOrders";
+import MyWishlist from "./component/MyWishlist";
 import Signup from "./component/Auth/Signup";
 import Login from "./component/Auth/Login";
 import Profile from "./component/Auth/Profile";
@@ -68,6 +69,8 @@ function App() {
 
           {/* 🛍 My Orders */}
           <Route path="/myorders" element={<MyOrders />} />
+
+            <Route path="/wishlist" element={<MyWishlist />} />
 
           {/* 🔐 Auth Routes */}
           <Route path="/login" element={<Login />} />

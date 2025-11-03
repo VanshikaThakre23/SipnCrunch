@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
+import gsap from "gsap";
+import 'aos/dist/aos.css';
 import "./FoodAdvice.css";
 
 const FoodAdvice = () => {
@@ -9,76 +11,75 @@ const FoodAdvice = () => {
   const [image2, setImage2] = useState("");
   const [showAdvice, setShowAdvice] = useState(false);
   const [showImages, setShowImages] = useState(false);
+const getFoodAdvice = () => {
+  if (!weight || !activityLevel) {
+    alert("Please enter your weight and select an activity level!");
+    return;
+  }
 
-  const getFoodAdvice = () => {
-    if (!weight || !activityLevel) {
-      alert("Please enter your weight and select an activity level!");
-      return;
-    }
+  let newAdvice = "";
+  let newImage1 = "";
+  let newImage2 = "";
 
-    let newAdvice = "";
-    let newImage1 = "";
-    let newImage2 = "";
+  // Sedentary
+  if (activityLevel === "sedentary" && weight <= 45) {
+    newAdvice =
+      "Weight kam hai. Thoda serious ho ja — doodh, paneer, aur protein wale khane include kar.";
+    newImage1 = "assets/images/banana-smoothie.webp";
+    newImage2 = "assets/images/panner-tikka.webp";
+  } else if (activityLevel === "sedentary" && weight > 45 && weight <= 55) {
+    newAdvice =
+      "Weight sahi track par hai. Balanced diet maintain kar aur processed food se door reh.";
+    newImage1 = "assets/images/strawberrysmoothie.png";
+    newImage2 = "assets/images/veg-chhese-sandwich.webp";
+  } else if (activityLevel === "sedentary" && weight > 55) {
+    newAdvice =
+      "Zyada baithne se metabolism slow hota hai. Walk kar aur green salad add kar diet me.";
+    newImage1 = "assets/images/Masala-Chaas.png";
+    newImage2 = "assets/images/sprouts-salad.jpg";
+  }
 
-    // Sedentary
-    if (activityLevel === "sedentary" && weight <= 45) {
-      newAdvice =
-        "Arre bhai, thoda kha pi le! Dry fruits, doodh, aur protein wale khane le.";
-      newImage1 = "assets/images/banana-smoothie.webp";
-      newImage2 = "assets/images/panner-tikka.webp";
-    } else if (activityLevel === "sedentary" && weight > 45 && weight <= 55) {
-      newAdvice =
-        "Perfect hai re! Bas balanced diet rakh, ekdum mast. Ek smoothie lele!";
-      newImage1 = "assets/images/strawberrysmoothie.png";
-      newImage2 = "assets/images/veg-chhese-sandwich.webp";
-    } else if (activityLevel === "sedentary" && weight > 55) {
-      newAdvice =
-        "Zyada baith mat, thoda active ho! Junk food kam kar aur ek plate salad le.";
-      newImage1 = "assets/images/Masala-Chaas.png";
-      newImage2 = "assets/images/sprouts-salad.jpg";
-    }
+  // Active
+  else if (activityLevel === "active" && weight <= 45) {
+    newAdvice =
+      "Activity acchi hai, par nutrition weak. Protein aur complex carbs pe focus kar.";
+    newImage1 = "assets/images/pannerroti.webp";
+    newImage2 = "assets/images/peanut-butter-shake.png";
+  } else if (activityLevel === "active" && weight > 45 && weight <= 55) {
+    newAdvice =
+      "Good balance. Energy aur strength dono barabar hain. Maintain kar, consistency zaroori hai.";
+    newImage1 = "assets/images/panner-bhurji.png";
+    newImage2 = "assets/images/mango-lassi-.png";
+  } else if (activityLevel === "active" && weight > 55) {
+    newAdvice =
+      "Workout theek hai, lekin portion control kar. Fiber aur hydration pe dhyan de.";
+    newImage1 = "assets/images/Greek-Salad.jpg";
+    newImage2 = "assets/images/detox-juice.jpg";
+  }
 
-    // Active
-    else if (activityLevel === "active" && weight <= 45) {
-      newAdvice =
-        "Tu active hai, par patla bhi! Thoda protein le, anda kha,paneer roti khayega kya?";
-      newImage1 = "assets/images/pannerroti.webp";
-      newImage2 = "assets/images/peanut-butter-shake.png";
-    } else if (activityLevel === "active" && weight > 45 && weight <= 55) {
-      newAdvice =
-        "Ekdum fit hai boss! Lean meats, dry fruits, aur acha khana khata reh.";
-      newImage1 = "assets/images/panner-bhurji.png";
-      newImage2 = "assets/images/mango-lassi-.png";
-    } else if (activityLevel === "active" && weight > 55) {
-      newAdvice =
-        "Bhai, mehnat toh karta hai par phir bhi mota ho raha hai! Roti kam, salad zyada kar.";
-      newImage1 = "assets/images/Greek-Salad.jpg";
-      newImage2 = "assets/images/detox-juice.jpg";
-    }
+  // Very Active
+  else if (activityLevel === "very-active" && weight <= 45) {
+    newAdvice =
+      "High activity ke saath energy loss zyada hota hai. Healthy fats aur carbs include kar.";
+    newImage1 = "assets/images/desi-ghee-paratha.webp";
+    newImage2 = "assets/images/mango-lassi-.png";
+  } else if (activityLevel === "very-active" && weight > 45 && weight <= 55) {
+    newAdvice =
+      "Excellent energy level. Protein intake aur hydration dono barabar rakho.";
+    newImage1 = "assets/images/chicken-curry1.jpg";
+    newImage2 = "assets/images/peanut-butter-shake.png";
+  } else if (activityLevel === "very-active" && weight > 55 && weight <= 90) {
+    newAdvice =
+      "Workout accha hai, par food quality check kar. Processed aur oily cheeze kam kar.";
+    newImage1 = "assets/images/leanprotein.png";
+    newImage2 = "assets/images/mango-lassi-.png";
+  } else if (activityLevel === "very-active" && weight > 90) {
+    newAdvice =
+      "Overweight with high activity? Diet aur rest cycle dono monitor kar. Smart efforts kar.";
+    newImage1 = "assets/images/runner.webp";
+    newImage2 = "assets/images/weightloss.jpg";
+  }
 
-    // Very Active
-    else if (activityLevel === "very-active" && weight <= 45) {
-      newAdvice =
-        "Bhau tu ekdum tez hai, par jyada patla mat ho! Butter, ghee, aur healthy carbs le.";
-      newImage1 = "assets/images/desi-ghee-paratha.webp";
-      newImage2 = "assets/images/mango-lassi-.png";
-    } else if (activityLevel === "very-active" && weight > 45 && weight <= 55) {
-      newAdvice =
-        "Ekdum zabardast fitness hai! Bas high-protein aur energy wale khane le.";
-      newImage1 = "assets/images/chicken-curry1.jpg";
-      newImage2 = "assets/images/peanut-butter-shake.png";
-    } else if (activityLevel === "very-active" && weight > 55 && weight <= 90) {
-      newAdvice =
-        "Ye Tu bahut active hai, par phir bhi weight badh raha hai! Diet pe dhyan de, lean protein le.";
-      newImage1 = "assets/images/leanprotein.png";
-      newImage2 = "assets/images/mango-lassi-.png";
-    }
-    else if (activityLevel === "very-active" && weight > 90) {
-      newAdvice =
-        "Ooo MYYY Gwwwaad Ye bhi koi weight hai, Exercise kr bhai.";
-      newImage1 = "assets/images/runner.webp";
-      newImage2 = "assets/images/weightloss.jpg";
-    }
 
     // Update state
     setAdvice(newAdvice);
@@ -98,10 +99,28 @@ const FoodAdvice = () => {
     setActivityLevel("");
   };
 
+  useEffect(() => {
+    
+  gsap.to("#bestFoodItemsShape", {
+  rotation: -5,
+  y: 40,
+  repeat: -1,
+  yoyo: true,
+  duration: 5,
+  ease: "sine.inOut",
+});
+
+  }, [])
+  
+
   return (
     <section className="food-advice-section">
-      <h2 data-aos="fade-up" data-aos-duration="1000">
-        Get Your Personalized Food & Drink Advice
+      <img id="bestFoodItemsShape"src="assets/images/bestFoodItemsShape1_1.png" alt="bestFoodItemsShape" />
+
+ 
+<img id="chefImg"src="assets/food-images/chefImg.png" alt="chefImg" />
+      <h2 >
+        Get Your Personalized Food & Drink Advice 
       </h2>
       <div className="container">
         <p data-aos="fade-up" data-aos-delay="300">

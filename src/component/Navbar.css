@@ -124,64 +124,121 @@ body {
     margin-left: 1rem;
   }
 
-
-  .navbar-toggler {
+.navbar-toggler {
   display: block;
   margin-right: 1rem;
   border: none;
   border-radius: 50%;
-  background: #e8e5e1;
-  font-size: 1rem;
-  color: #e9e1d5;
-  padding: 0.5rem; /* fixed invalid value */
+  background: #f3efe9;
+  font-size: 1.2rem;
+  color: #3a3a3a;
+  padding: 0.6rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
 }
 
+.navbar-toggler:hover {
+  background: #fff;
+  transform: scale(1.05);
+}
+
+/* Mobile collapse menu */
 .navbar-collapse {
-  background-color: #5d5a5a;
-  padding: 0rem 0;
-  margin-top: 7.5rem;
-  margin-left: 0;
+  background: rgba(40, 40, 40, 0.9);
+  backdrop-filter: blur(12px);
   position: fixed;
-  top: 0;
-  right: -100%; /* 🔹 start hidden off-screen to the right */
-  width: 80%; /* adjust as needed */
-  border-bottom-left-radius: 50%;
-  border-top-left-radius: 50%;
-  border-bottom-right-radius: 50%;
-   border-top-right-radius: 50%;
-  height: auto;
-  transition: right 0.4s ease-in-out; /* 🔹 animate from right side */
+  top: -100%; /* start hidden above screen */
+  left: 0;
+  width: 100%;
+  border-bottom-left-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  transition: top 0.5s cubic-bezier(0.25, 1, 0.3, 1), opacity 0.4s ease;
+  opacity: 0;
   z-index: 999;
+  padding: 2rem 0;
 }
 
-/* When navbar is toggled open */
+/* 🔹 When navbar toggled open */
 .navbar-collapse.show {
-  right: 0; /* 🔹 slides in from right */
+  top: 0;
+  opacity: 1;
 }
 
-/* Nav links inside mobile menu */
+/* Animate the dropdown fade-in of links */
 .navbar-nav {
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center; /* centers all links horizontally */
+  align-items: center;
+  animation: fadeSlideIn 0.8s ease forwards;
 }
 
+@keyframes fadeSlideIn {
+  from {
+    transform: translateY(-15px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Nav links styling */
 .navbar-nav .nav-link {
-  color: rgb(249, 250, 245) !important;
-  display: block;
+  color: #f5f5f5 !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
   margin: 10px 0;
-  text-align: center;
+  position: relative;
+  transition: color 0.3s ease;
 }
 
-/* Dropdown style inside mobile */
-.custom-dropdown {
+.navbar-nav .nav-link:hover {
+  color: #f4b942 !important;
+}
+
+/* Optional glowing underline animation on hover */
+.navbar-nav .nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -3px;
+  left: 0;
+  background: #f4b942;
+  transition: width 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover::after {
   width: 100%;
-  background-color: #333;
 }
 
-/* Hide certain links on mobile */
-.menulink {
-  /* add responsive logic here if needed */
+/* Dropdown (if you have one) */
+.custom-dropdown {
+  width: 90%;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  margin: 0.5rem auto;
+  text-align: center;
+  padding: 0.8rem 0;
+}
+
+@media (min-width: 992px) {
+  .navbar-collapse {
+    position: static;
+    background: none;
+    box-shadow: none;
+    backdrop-filter: none;
+    opacity: 1;
+    top: 0;
+  }
+
+  .navbar-nav {
+    flex-direction: row;
+    animation: none;
+  }
 }
 }

@@ -64,7 +64,7 @@ import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
-   import AOS from 'aos';
+
     import 'aos/dist/aos.css';
 import "./BeverageSection.css"; // or FoodSection.css if you have that
 
@@ -82,6 +82,17 @@ const FoodSection = () => {
           ease: "sine.inOut",
       
       })
+
+      gsap.from(" #foodsandwich", {
+          rotation: -5,
+          y: "-=40",
+          repeat: -1,
+          yoyo: true,
+          duration: 5,
+      
+          ease: "sine.inOut",
+      
+      })
       
           },[])
       
@@ -89,9 +100,12 @@ const FoodSection = () => {
 
   return (
     <>
-     <img id="foodburg" data-aos-duration="3000" src="assets/images/burger.webp" alt=""></img>
+     
       <section className="food" data-aos="fade-up">
-       
+       <img id="foodburg" data-aos-duration="3000" src="assets/images/burger.webp" alt=""></img>
+
+        <img id="foodsandwich" data-aos-duration="3000" src="assets/images/veg-chhese-sandwich.webp" alt=""></img>
+
         <div className="food-text">
           <h2>Unleash Your Cravings with Our Menu</h2>
         </div>

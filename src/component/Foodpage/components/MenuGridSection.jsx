@@ -5,6 +5,9 @@ import { showToast } from "../../../utils/toast";
 import "react-toastify/dist/ReactToastify.css";
 import { useOrders } from "../../../context/OrderContext";
 import { useWishlist } from "../../../context/WishlistContext";
+
+import { FaShoppingCart } from "react-icons/fa";
+
 import "./MenuGridSection.css";
 
 const MenuGridSection = () => {
@@ -44,7 +47,13 @@ const MenuGridSection = () => {
 
   const handleOrder = (item) => {
     addToOrders(item);
-    showToast(`${item.name} added to cart 🛒`, "success");
+    showToast(
+    <>
+     
+      {item.name} ADDED TO CART <FaShoppingCart style={{ color: "#03431dff", marginLeft: "6px",fontSize:"1.2rem" }} />
+    </>,
+    "success"
+  );
   };
 
   return (

@@ -256,13 +256,46 @@
 }
 
 @media (max-width: 480px) {
+ .orders-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  padding: 20px;
+}
+
+.order-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
   .orders-header h2 {
     font-size: 1.5rem;
   }
 
-  .order-info h3 {
-    font-size: 1.1rem;
-  }
+  .order-info {
+  padding: 10px 15px;
+}
+
+.order-info h3 {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.order-info p {
+  font-size: 0.95rem;
+  color: #666;
+}
+
+.order-img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
 
   .wishlist-section h2 {
     font-size: 1.6rem;
@@ -271,5 +304,26 @@
   .back-btn {
     font-size: 0.9rem;
     padding: 5px 10px;
+    margin-bottom: 1rem;
   }
+}
+/* ______________________cart icon styling_______________________ */
+.order-title {
+  font-size: 1.8rem;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.order-title i {
+  color: #b54d10; /* trendy yellow-gold tone */
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.order-title:hover i {
+  transform: rotate(-10deg) scale(1.1);
 }

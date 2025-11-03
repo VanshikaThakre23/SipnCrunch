@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./Navbar.css";
-
+ 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -49,7 +49,12 @@ const Navbar = () => {
             </li>
             <li className="nav-item nav-icon">
               <Link className="nav-link" to="/myorders" onClick={() => setIsOpen(false)}>
-                <i className="fa-solid fa-shopping-cart"></i>
+                <i className="fa-solid fa-shopping-cart"></i>Orders
+              </Link>
+            </li>
+            <li className="nav-item nav-icon">
+              <Link className="nav-link" to="/wishlist" onClick={() => setIsOpen(false)}>
+            Wishlist
               </Link>
             </li>
           </ul>
