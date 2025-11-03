@@ -24,17 +24,17 @@ const getFoodAdvice = () => {
   // Sedentary
   if (activityLevel === "sedentary" && weight <= 45) {
     newAdvice =
-      "Weight kam hai. Thoda serious ho ja — doodh, paneer, aur protein wale khane include kar.";
+      "Weight kam hai. Thoda serious ho ja — doodh, paneer, aur protein wale khane include kar.YOU CAN TRY THESE OPTION";
     newImage1 = "assets/images/banana-smoothie.webp";
     newImage2 = "assets/images/panner-tikka.webp";
   } else if (activityLevel === "sedentary" && weight > 45 && weight <= 55) {
     newAdvice =
-      "Weight sahi track par hai. Balanced diet maintain kar aur processed food se door reh.";
+      "Weight sahi track par hai. Balanced diet maintain kar aur processed food se door reh.YOU CAN TRY THESE OPTION";
     newImage1 = "assets/images/strawberrysmoothie.png";
     newImage2 = "assets/images/veg-chhese-sandwich.webp";
   } else if (activityLevel === "sedentary" && weight > 55) {
     newAdvice =
-      "Zyada baithne se metabolism slow hota hai. Walk kar aur green salad add kar diet me.";
+      "Zyada baithne se metabolism slow hota hai. Walk kar aur green salad add kar diet me.YOU CAN TRY THESE OPTION";
     newImage1 = "assets/images/Masala-Chaas.png";
     newImage2 = "assets/images/sprouts-salad.jpg";
   }
@@ -42,17 +42,17 @@ const getFoodAdvice = () => {
   // Active
   else if (activityLevel === "active" && weight <= 45) {
     newAdvice =
-      "Activity acchi hai, par nutrition weak. Protein aur complex carbs pe focus kar.";
+      "Activity acchi hai, par nutrition weak. Protein aur complex carbs pe focus kar.YOU CAN TRY THESE OPTION";
     newImage1 = "assets/images/pannerroti.webp";
     newImage2 = "assets/images/peanut-butter-shake.png";
   } else if (activityLevel === "active" && weight > 45 && weight <= 55) {
     newAdvice =
-      "Good balance. Energy aur strength dono barabar hain. Maintain kar, consistency zaroori hai.";
+      "Good balance. Energy aur strength dono barabar hain. Maintain kar, consistency zaroori hai.YOU CAN TRY THESE OPTION";
     newImage1 = "assets/images/panner-bhurji.png";
     newImage2 = "assets/images/mango-lassi-.png";
   } else if (activityLevel === "active" && weight > 55) {
     newAdvice =
-      "Workout theek hai, lekin portion control kar. Fiber aur hydration pe dhyan de.";
+      "Workout theek hai, lekin portion control kar. Fiber aur hydration pe dhyan de.YOU CAN TRY THESE OPTION";
     newImage1 = "assets/images/Greek-Salad.jpg";
     newImage2 = "assets/images/detox-juice.jpg";
   }
@@ -60,22 +60,22 @@ const getFoodAdvice = () => {
   // Very Active
   else if (activityLevel === "very-active" && weight <= 45) {
     newAdvice =
-      "High activity ke saath energy loss zyada hota hai. Healthy fats aur carbs include kar.";
+      "High activity ke saath energy loss zyada hota hai. Healthy fats aur carbs include kar.YOU CAN TRY THESE OPTION";
     newImage1 = "assets/images/desi-ghee-paratha.webp";
     newImage2 = "assets/images/mango-lassi-.png";
   } else if (activityLevel === "very-active" && weight > 45 && weight <= 55) {
     newAdvice =
-      "Excellent energy level. Protein intake aur hydration dono barabar rakho.";
+      "Excellent energy level. Protein intake aur hydration dono barabar rakho.YOU CAN TRY THESE OPTION";
     newImage1 = "assets/images/chicken-curry1.jpg";
     newImage2 = "assets/images/peanut-butter-shake.png";
   } else if (activityLevel === "very-active" && weight > 55 && weight <= 90) {
     newAdvice =
-      "Workout accha hai, par food quality check kar. Processed aur oily cheeze kam kar.";
+      "Workout accha hai, par food quality check kar. Processed aur oily cheeze kam kar.YOU CAN TRY THESE OPTION";
     newImage1 = "assets/images/leanprotein.png";
     newImage2 = "assets/images/mango-lassi-.png";
   } else if (activityLevel === "very-active" && weight > 90) {
     newAdvice =
-      "Overweight with high activity? Diet aur rest cycle dono monitor kar. Smart efforts kar.";
+      "Overweight with high activity? Diet aur rest cycle dono monitor kar. Smart efforts kar.YOU CAN TRY THESE OPTION";
     newImage1 = "assets/images/runner.webp";
     newImage2 = "assets/images/weightloss.jpg";
   }

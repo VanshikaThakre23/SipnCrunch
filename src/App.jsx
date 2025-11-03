@@ -39,6 +39,7 @@ function App() {
   pauseOnHover={false}
   draggable={false}
   theme="colored"
+  style={{ zIndex: 9999, marginTop: "70px" }}
 />
 
         <Navbar />
