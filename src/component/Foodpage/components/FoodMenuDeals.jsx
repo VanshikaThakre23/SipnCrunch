@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import { useOrders } from "../../../context/OrderContext";
+import { useAuth } from "../../../context/AuthContext"; // ✅ Added
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./FoodMenuDeals.css";
@@ -8,6 +9,7 @@ import "./FoodMenuDeals.css";
 const FoodMenuDeals = () => {
   const centerImgRef = useRef(null);
   const { addToOrders } = useOrders();
+  const { isAuthenticated } = useAuth(); // ✅ Added
   const location = useLocation();
 
   // Keep one toast active for cart notifications
@@ -40,6 +42,18 @@ const FoodMenuDeals = () => {
 
   // Handle "Order Now" click
   const handleOrder = () => {
+    // ✅ Check login first
+    if (!isAuthenticated()) {
+      toast.warn("Please login or create an account first 🔐", {
+        position: "top-center",
+        autoClose: 2500,
+        closeOnClick: true,
+        draggable: true,
+        theme: "colored",
+      });
+      return;
+    }
+
     if (!centerImgRef.current) return;
 
     const selectedItem = {

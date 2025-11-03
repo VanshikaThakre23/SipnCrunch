@@ -2,16 +2,10 @@ import React, { useEffect, useState } from "react";
 import "./DrGallery.css";
 import { useWishlist } from "../../../context/WishlistContext";
 import { useOrders } from "../../../context/OrderContext";
+import { useAuth } from "../../../context/AuthContext"; // ✅ Import Auth Context
 import { showToast } from "../../../utils/toast";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
-/**
- * NOTE:
- * - Uses font-awesome <i> icons (fa-heart, fa-shopping-cart).
- *   Make sure Font Awesome is loaded in index.html or use your preferred icon system.
- * - Image paths assume your assets folder location matches the paths below.
- */
 
 const drinksData = [
   { id: 1, name: "Blackberry Sunrise Sipper", category: "juices", price: 90, img: "assets/drink-images/b1.webp" },
@@ -28,10 +22,9 @@ const drinksData = [
   { id: 12, name: "Mango Lassi", category: "colddrinks", price: 90, img: "assets/drink-images/mango-lassi-.png" },
   { id: 13, name: "Cookie Monster Shake", category: "shakes", price: 100, img: "assets/drink-images/monstershake.png" },
   { id: 14, name: "Classic Strawberry Milkshake", category: "shakes", price: 100, img: "assets/drink-images/Classic Strawberry Milkshake.webp" },
-  { id: 16, name: "Fanta", category: "colddrinks", price: 90, img: "assets/drink-images/fanta.jpg" },
-  { id: 12, name: "Fruit Bug Cocktail", category: "colddrinks", price: 90, img: "assets/drink-images/fruitcocktail.jpg" },
-  { id: 15, name: "Strawberry Smoothie", category: "smoothies", price: 90, img: "assets/drink-images/strawberrysmoothie.png" },
-
+  { id: 15, name: "Fanta", category: "colddrinks", price: 90, img: "assets/drink-images/fanta.jpg" },
+  { id: 16, name: "Fruit Bug Cocktail", category: "colddrinks", price: 90, img: "assets/drink-images/fruitcocktail.jpg" },
+  { id: 17, name: "Strawberry Smoothie", category: "smoothies", price: 90, img: "assets/drink-images/strawberrysmoothie.png" },
 ];
 
 const categories = ["juices", "shakes", "colddrinks", "smoothies"];
@@ -41,17 +34,26 @@ const DrGallery = () => {
   const [visibleItems, setVisibleItems] = useState([]);
   const { addToWishlist } = useWishlist();
   const { addToOrders } = useOrders();
+  const { user } = useAuth(); // ✅ get logged-in user
 
   useEffect(() => {
     setVisibleItems(drinksData.filter((d) => d.category === filter));
   }, [filter]);
 
   const handleWishlist = (item) => {
+    if (!user) {
+      showToast("Please login or register to add to wishlist ❤️", "warning");
+      return;
+    }
     addToWishlist(item);
     showToast(`${item.name} added to wishlist ❤️`, "info");
   };
 
   const handleOrder = (item) => {
+    if (!user) {
+      showToast("Please login or register to place an order 🧾", "warning");
+      return;
+    }
     addToOrders(item);
     showToast(`${item.name} added to cart 🛒`, "success");
   };
@@ -81,7 +83,6 @@ const DrGallery = () => {
                   <img src={item.img} alt={item.name} className="dr-item-img" />
                   <p className="dr-item-name">{item.name}</p>
 
-                  {/* ICONS - scoped with dr- prefix so they don't affect other pages */}
                   <div className="dr-icons">
                     <i
                       className="dr-wishlist-icon fa fa-heart"
@@ -103,7 +104,6 @@ const DrGallery = () => {
         </div>
       </section>
 
-      {/* keep ToastContainer here so toasts appear for this page too */}
       <ToastContainer />
     </>
   );

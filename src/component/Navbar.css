@@ -242,3 +242,94 @@ body {
   }
 }
 }
+
+
+/* ===================== ACCOUNT DROPDOWN - DESKTOP VIEW ===================== */
+@media (min-width: 992px) {
+  .nav-item.dropdown {
+    position: relative;
+  }
+
+  .nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+    animation: fadeInDown 0.3s ease;
+  }
+
+  .dropdown-menu {
+    display: none;
+    position: absolute !important;
+    top: 100%;
+    right: 0;
+    background-color: #333;
+    border: none;
+    border-radius: 8px;
+    min-width: 180px;
+    padding: 0.5rem 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  }
+
+  .dropdown-item {
+    color: rgb(194, 239, 15) !important;
+    font-weight: 500;
+    padding: 10px 15px;
+  }
+
+  .dropdown-item:hover {
+    background-color: #444;
+    color: orange !important;
+    transition: background 0.2s ease;
+  }
+
+  .dropdown-divider {
+    border-color: #555;
+  }
+}
+
+/* ===================== MOBILE VIEW (NO DROPDOWN) ===================== */
+@media (max-width: 991px) {
+  /* Hide dropdown behavior */
+  .nav-item.dropdown .dropdown-toggle::after {
+    display: none;
+  }
+
+  /* Display dropdown links as normal nav links */
+  .nav-item.dropdown .dropdown-menu {
+    display: flex !important;
+    flex-direction: column;
+    position: static !important;
+    background: none;
+    box-shadow: none;
+    border: none;
+    padding: 0;
+    width: 100%;
+  }
+
+  .nav-item.dropdown .dropdown-item {
+    color: #f5f5f5 !important;
+    font-size: 1.1rem;
+    margin: 8px 0;
+    text-align: center;
+  }
+
+  .nav-item.dropdown .dropdown-item:hover {
+    background: none;
+    color: #f4b942 !important;
+  }
+
+  /* Add subtle spacing */
+  .dropdown-divider {
+    display: none;
+  }
+}
+
+/* ===================== ANIMATION ===================== */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

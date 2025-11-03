@@ -1,10 +1,12 @@
-import { useEffect} from "react";
-import { useLocation  } from "react-router-dom";
+// src/component/.../MenuGridSection.jsx
+import React, { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { showToast } from "../../../utils/toast";
 import "react-toastify/dist/ReactToastify.css";
 import { useOrders } from "../../../context/OrderContext";
 import { useWishlist } from "../../../context/WishlistContext";
+import { useAuth } from "../../../context/AuthContext";
 
 import { FaShoppingCart } from "react-icons/fa";
 
@@ -13,9 +15,10 @@ import "./MenuGridSection.css";
 const MenuGridSection = () => {
   const { addToOrders } = useOrders();
   const { addToWishlist } = useWishlist();
-  const location = useLocation(); // ✅ hook should be at top level
+  const { user } = useAuth();
+  const location = useLocation();
 
-  // ✅ Scroll to section if hash present in URL
+  // Scroll to section if hash present in URL
   useEffect(() => {
     if (location.hash) {
       const element = document.querySelector(location.hash);
@@ -40,20 +43,31 @@ const MenuGridSection = () => {
     { id: 12, name: "Tandoori Feast", img: "assets/food-images/mg1_7.jpg", price: "Rs.179" },
   ];
 
+  // Handle Wishlist with auth check
   const handleWishlist = (item) => {
+    if (!user) {
+      showToast("Please login or create an account first 🔐", "warn");
+      return;
+    }
+
     addToWishlist(item);
     showToast(`${item.name} added to wishlist ❤️`, "info");
   };
 
+  // Handle Order with auth check
   const handleOrder = (item) => {
+    if (!user) {
+      showToast("Please login or create an account first 🔐", "warn");
+      return;
+    }
+
     addToOrders(item);
     showToast(
-    <>
-     
-      {item.name} ADDED TO CART <FaShoppingCart style={{ color: "#03431dff", marginLeft: "6px",fontSize:"1.2rem" }} />
-    </>,
-    "success"
-  );
+      <>
+        {item.name} ADDED TO CART <FaShoppingCart style={{ color: "#03431dff", marginLeft: "6px", fontSize: "1.2rem" }} />
+      </>,
+      "success"
+    );
   };
 
   return (
@@ -83,7 +97,7 @@ const MenuGridSection = () => {
                       >
                         Order Now
                       </button>
-                    </div> 
+                    </div>
 
                     <div className="icons">
                       <i
@@ -111,8 +125,8 @@ const MenuGridSection = () => {
         </div>
       </section>
 
-      {/* Toast Container */}
-      <ToastContainer />
+
+
     </>
   );
 };

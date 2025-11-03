@@ -18,7 +18,7 @@ import FoodPage from "./component/Foodpage/FoodPage";
 import DrinkPage from "./component/Drinkpage/DrinkPage";
 import MyOrders from "./component/MyOrders";
 import MyWishlist from "./component/MyWishlist";
-import Signup from "./component/Auth/Signup";
+import Signup from "./component/Auth/Register";
 import Login from "./component/Auth/Login";
 import Profile from "./component/Auth/Profile";
 import Checkout from "./component/Checkout";

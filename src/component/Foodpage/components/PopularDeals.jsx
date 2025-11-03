@@ -4,9 +4,9 @@ import { ToastContainer } from "react-toastify";
 import { showToast } from "../../../utils/toast";
 import "react-toastify/dist/ReactToastify.css";
 import { useOrders } from "../../../context/OrderContext";
+import { useAuth } from "../../../context/AuthContext"; // ✅ import auth
 
 import "./PopularDeals.css";
-
 
 const popularDealsData = [
   {
@@ -47,39 +47,40 @@ const popularDealsData = [
 ];
 
 const PopularDeals = () => {
-
   const { addToOrders } = useOrders();
+  const { user } = useAuth(); // ✅ get logged-in user
 
-   const handleOrder = (item) => {
-      addToOrders(item);
-      showToast(`${item.name} added to cart 🛒`, "success");
-    };
-
-useEffect(() => {
-  const t1 = gsap.from(".popularshapeimgtop", {
-    y: "+=25",
-    repeat: -1,
-    yoyo: true,
-    duration: 4,
-    ease: "power1.inOut"
-  });
-
-  const t2 = gsap.to(".shapeimgtop2", {
-    x: "+=9",
-    duration: 3,
-    repeat: -1,
-    yoyo: true,
-    ease: "power1.inOut"
-  });
-
-  // cleanup on unmount to avoid memory leaks
-  return () => {
-    t1.kill();
-    t2.kill();
+  const handleOrder = (item) => {
+    if (!user) {
+      showToast("Please login or register to place an order 🧾", "warning");
+      return;
+    }
+    addToOrders(item);
+    showToast(`${item.name} added to cart 🛒`, "success");
   };
-}, []); // ✅ Empty dependency array ensures GSAP runs only once
 
+  useEffect(() => {
+    const t1 = gsap.from(".popularshapeimgtop", {
+      y: "+=25",
+      repeat: -1,
+      yoyo: true,
+      duration: 4,
+      ease: "power1.inOut",
+    });
 
+    const t2 = gsap.to(".shapeimgtop2", {
+      x: "+=9",
+      duration: 3,
+      repeat: -1,
+      yoyo: true,
+      ease: "power1.inOut",
+    });
+
+    return () => {
+      t1.kill();
+      t2.kill();
+    };
+  }, []);
 
   return (
     <section id="popular-deals">
@@ -110,7 +111,9 @@ useEffect(() => {
                   {[...Array(5)].map((_, i) => (
                     <i
                       key={i}
-                      className={`fa fa-star ${i < item.rating ? "yellow" : "white"}`}
+                      className={`fa fa-star ${
+                        i < item.rating ? "yellow" : "white"
+                      }`}
                     ></i>
                   ))}
                 </div>
@@ -118,18 +121,16 @@ useEffect(() => {
               <button
                 type="button"
                 className="p-d-btn"
-                 onClick={() => handleOrder(item)}
+                onClick={() => handleOrder(item)}
               >
                 ORDER NOW
               </button>
-
             </div>
           ))}
         </div>
       </div>
 
-
-
+      <ToastContainer />
     </section>
   );
 };

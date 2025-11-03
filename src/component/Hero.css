@@ -130,7 +130,7 @@
     92.69% 44.82%
   );
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-  animation: rotateBadge 10s linear infinite;
+  animation: rotateBadge 20s linear infinite;
 }
 
 @keyframes rotateBadge {

@@ -1,0 +1,132 @@
+/* ===================== GENERAL CONTAINER ===================== */
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f8f9fa, #e8ecf0);
+  padding: 40px 15px;
+  color: #222;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ===================== CARD STYLING ===================== */
+.auth-card {
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 40px;
+  max-width: 420px;
+  width: 100%;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
+  animation: fadeInUp 0.7s ease;
+}
+
+.auth-card h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-weight: 700;
+  color: #333;
+  letter-spacing: 0.5px;
+}
+
+/* ===================== FORM STYLING ===================== */
+.auth-card label {
+  color: #444;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.auth-card .form-control {
+  background-color: #f7f7f7;
+  border: 1px solid #ccc;
+  color: #222;
+  border-radius: 8px;
+  padding: 10px;
+  transition: all 0.3s ease;
+}
+
+.auth-card .form-control:focus {
+  border-color: #6c63ff;
+  box-shadow: 0 0 8px rgba(108, 99, 255, 0.2);
+}
+
+/* ===================== BUTTON STYLING ===================== */
+.auth-card button {
+  width: 100%;
+  padding: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  letter-spacing: 0.5px;
+  margin-top: 10px;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+/* Button variants — clean, modern, no hover needed */
+.auth-card .btn-primary {
+  background-color: #6c63ff;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(108, 99, 255, 0.25);
+}
+
+.auth-card .btn-success {
+  background-color: #00b894;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 184, 148, 0.25);
+}
+
+.auth-card .btn-danger {
+  background-color: #ff7675;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(255, 118, 117, 0.25);
+}
+
+/* ===================== TOAST POSITION ===================== */
+.Toastify__toast-container {
+  top: 80px !important;
+}
+
+/* ===================== PROFILE PAGE ===================== */
+.profile-info {
+  text-align: center;
+}
+
+.profile-info h2 {
+  color: #333;
+}
+
+.profile-info p {
+  color: #666;
+  margin-top: 10px;
+  font-size: 1.1rem;
+}
+
+/* ===================== ANIMATION ===================== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 576px) {
+  .auth-container {
+    
+    padding: 20px;
+  }
+
+  .auth-card {
+    padding: 25px;
+  }
+
+  .auth-card h2 {
+    font-size: 1.4rem;
+  }
+}
