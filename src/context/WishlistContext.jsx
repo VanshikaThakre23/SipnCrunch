@@ -1,17 +1,31 @@
 import React, { createContext, useContext, useState, useEffect, useRef } from "react";
 import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { useAuth } from "./AuthContext";
 
 const WishlistContext = createContext();
 
 export const WishlistProvider = ({ children }) => {
-  const [wishlist, setWishlist] = useState(() => {
-    const stored = localStorage.getItem("wishlist");
-    return stored ? JSON.parse(stored) : [];
-  });
-
-  // ✅ Prevent duplicate toasts in Strict Mode
+  const { user } = useAuth();
+  const [wishlist, setWishlist] = useState([]);
   const toastShownRef = useRef(false);
+
+  // 🔁 Load user-specific wishlist when user changes
+  useEffect(() => {
+    if (user && user._id) {
+      const key = `wishlist_${user._id}`;
+      const savedWishlist = localStorage.getItem(key);
+      setWishlist(savedWishlist ? JSON.parse(savedWishlist) : []);
+    } else {
+      setWishlist([]);
+    }
+  }, [user?._id]);
+
+  // 💾 Save wishlist to user-specific key
+  useEffect(() => {
+    if (user && user._id) {
+      localStorage.setItem(`wishlist_${user._id}`, JSON.stringify(wishlist));
+    }
+  }, [wishlist, user?._id]);
 
   const addToWishlist = (item) => {
     setWishlist((prev) => {
@@ -23,16 +37,12 @@ export const WishlistProvider = ({ children }) => {
         }
         return prev;
       }
-
       const updated = [...prev, item];
-      localStorage.setItem("wishlist", JSON.stringify(updated));
-
       if (!toastShownRef.current) {
         toast.success(`${item.name} added to wishlist! 💚`);
         toastShownRef.current = true;
         setTimeout(() => (toastShownRef.current = false), 500);
       }
-
       return updated;
     });
   };
@@ -40,25 +50,25 @@ export const WishlistProvider = ({ children }) => {
   const removeFromWishlist = (id) => {
     setWishlist((prev) => {
       const updated = prev.filter((w) => w.id !== id);
-      localStorage.setItem("wishlist", JSON.stringify(updated));
-
       if (!toastShownRef.current) {
         toast.error("Item removed from wishlist 💔");
         toastShownRef.current = true;
         setTimeout(() => (toastShownRef.current = false), 500);
       }
-
       return updated;
     });
   };
 
-  useEffect(() => {
-    localStorage.setItem("wishlist", JSON.stringify(wishlist));
-  }, [wishlist]);
+  const clearWishlist = () => {
+    setWishlist([]);
+    if (user && user._id) {
+      localStorage.removeItem(`wishlist_${user._id}`);
+    }
+  };
 
   return (
     <WishlistContext.Provider
-      value={{ wishlist, addToWishlist, removeFromWishlist }}
+      value={{ wishlist, addToWishlist, removeFromWishlist, clearWishlist }}
     >
       {children}
     </WishlistContext.Provider>

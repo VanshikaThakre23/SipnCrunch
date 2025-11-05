@@ -1,48 +1,41 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
-import { useAuth } from "../../context/AuthContext";
-import { showToast } from "../../utils/toast";
+import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import "../../styles/AuthPages.css";
+import { useAuth } from "../../context/AuthContext";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
-  const { login, user } = useAuth();
   const navigate = useNavigate();
+  const { login } = useAuth();
+  const [formData, setFormData] = useState({ email: "", password: "" });
 
-  // ✅ If user already logged in → redirect to homepage
-  useEffect(() => {
-    if (user) {
-      navigate("/");
-    }
-  }, [user, navigate]);
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
- const API_URL = import.meta.env.VITE_API_URL;
-
-
-  const handleLogin = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
-
     try {
-      const res = await axios.post(`${API_URL}/auth/login`, {
-        email,
-        password,
-      });
+      const res = await axios.post(
+        "https://sipncrunch-backend-buop.onrender.com/api/auth/login",
+        formData,
+        { headers: { "Content-Type": "application/json" } }
+      );
 
-      login(res.data.user, res.data.token);
+      const { user, token } = res.data;
 
-      const userName = res.data.user?.name || "User";
-      showToast(`Welcome back, ${userName}! 🎉`, "success");
+      if (!user || !token) {
+        toast.error("Invalid response from server");
+        return;
+      }
 
+      login(user, token); // ✅ update AuthContext & localStorage
+
+      toast.success(`Welcome back, ${user.name.split(" ")[0]}!`);
       navigate("/");
     } catch (err) {
-      console.error("Login failed:", err);
-      showToast("Invalid email or password ❌", "error");
-    } finally {
-      setLoading(false);
+      const msg = err.response?.data?.message || "Login failed";
+      toast.error(msg);
     }
   };
 
@@ -50,37 +43,33 @@ const Login = () => {
     <div className="auth-container">
       <div className="auth-card">
         <h2>Login</h2>
-        <form onSubmit={handleLogin}>
+        <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label>Email</label>
             <input
               type="email"
+              name="email"
               className="form-control"
-              placeholder="Enter your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={formData.email}
+              onChange={handleChange}
               required
+              placeholder="Enter your email"
             />
           </div>
-
           <div className="mb-3">
             <label>Password</label>
             <input
               type="password"
+              name="password"
               className="form-control"
-              placeholder="Enter your password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              value={formData.password}
+              onChange={handleChange}
               required
+              placeholder="Enter your password"
             />
           </div>
-
-          <button
-            type="submit"
-            className="btn btn-primary w-100"
-            disabled={loading}
-          >
-            {loading ? "Logging in..." : "Login"}
+          <button type="submit" className="btn btn-success w-100">
+            Login
           </button>
         </form>
       </div>

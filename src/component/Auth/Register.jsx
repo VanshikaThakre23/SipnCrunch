@@ -1,77 +1,81 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { showToast } from "../../utils/toast";
+import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import "../../styles/AuthPages.css";
 
 const Register = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
 
- const API_URL = import.meta.env.VITE_API_URL;
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-
-  const handleRegister = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-    await axios.post(`${API_URL}/auth/register`, {
-        name,
-        email,
-        password,
-      });
-      showToast("Registration successful! Please login.", "success");
+      const res = await axios.post(
+        "https://sipncrunch-backend-buop.onrender.com/api/auth/register",
+        formData,
+        { headers: { "Content-Type": "application/json" } }
+      );
+
+      toast.success(res.data.message || "Registered successfully");
       navigate("/login");
     } catch (err) {
-      console.error(err);
-      showToast("Registration failed ❌", "error");
+      const msg = err.response?.data?.message || "Registration failed";
+      toast.error(msg);
     }
   };
 
   return (
-    <div className="auth-container">
-      <div className="auth-card">
-        <h2>Register</h2>
-        <form onSubmit={handleRegister}>
-          <div className="mb-3">
-            <label>Name</label>
-            <input
-              type="text"
-              className="form-control"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-            />
-          </div>
-
-          <div className="mb-3">
-            <label>Email</label>
-            <input
-              type="email"
-              className="form-control"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
-
-          <div className="mb-3">
-            <label>Password</label>
-            <input
-              type="password"
-              className="form-control"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
-
-          <button type="submit" className="btn btn-success">
-            Sign Up
-          </button>
-        </form>
-      </div>
+    <div className="container py-5" style={{ maxWidth: "500px" }}>
+      <h2 className="text-center mb-4">Create an Account</h2>
+      <form onSubmit={handleSubmit} className="card p-4 shadow-sm">
+        <div className="mb-3">
+          <label className="form-label">Full Name</label>
+          <input
+            type="text"
+            name="name"
+            className="form-control"
+            value={formData.name}
+            onChange={handleChange}
+            required
+            placeholder="Enter your name"
+          />
+        </div>
+        <div className="mb-3">
+          <label className="form-label">Email address</label>
+          <input
+            type="email"
+            name="email"
+            className="form-control"
+            value={formData.email}
+            onChange={handleChange}
+            required
+            placeholder="Enter your email"
+          />
+        </div>
+        <div className="mb-3">
+          <label className="form-label">Password</label>
+          <input
+            type="password"
+            name="password"
+            className="form-control"
+            value={formData.password}
+            onChange={handleChange}
+            required
+            placeholder="Enter password"
+          />
+        </div>
+        <button type="submit" className="btn btn-danger w-100">
+          Register
+        </button>
+      </form>
     </div>
   );
 };

@@ -18,7 +18,7 @@ import FoodPage from "./component/Foodpage/FoodPage";
 import DrinkPage from "./component/Drinkpage/DrinkPage";
 import MyOrders from "./component/MyOrders";
 import MyWishlist from "./component/MyWishlist";
-import Signup from "./component/Auth/Register";
+import Register from "./component/Auth/Register";
 import Login from "./component/Auth/Login";
 import Profile from "./component/Auth/Profile";
 import Checkout from "./component/Checkout";
@@ -75,7 +75,8 @@ function App() {
 
           {/* 🔐 Auth Routes */}
           <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
+         
+      <Route path="/register" element={<Register />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/checkout" element={<Checkout />} />
 
