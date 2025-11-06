@@ -17,14 +17,14 @@ const Login = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "https://sipncrunch-backend-buop.onrender.com/api/auth/login",
+        "http://localhost:3000/api/auth/login",//replace your node server host
         formData,
         { headers: { "Content-Type": "application/json" } }
       );
 
       const { user, token } = res.data;
-
-      if (!user || !token) {
+      console.log(`user login data `,res.data)
+      if (!token) {
         toast.error("Invalid response from server");
         return;
       }
