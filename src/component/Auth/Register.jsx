@@ -15,11 +15,11 @@ const Register = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => { 
     e.preventDefault();
     try {
       const res = await axios.post(
-        "http://localhost:3000/api/auth/register", //replace your node host
+        "http://localhost:5000/api/auth/register", //replace your node host
         formData,
         { headers: { "Content-Type": "application/json" } }
       );
