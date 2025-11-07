@@ -33,8 +33,8 @@ const Register = () => {
   };
 
   return (
-    <div className="auth-container m-auto py-5 " style={{ maxWidth: "500px" }}>
-      <div className="auth-card">
+    <div className="container m-auto py-5 " style={{ maxWidth: "500px" }}>
+  
         <h2 className="text-center mb-4 mt-5" >Create an Account</h2>
         <form onSubmit={handleSubmit} className="card p-4 shadow-sm">
           <div className="mb-3">
@@ -77,7 +77,7 @@ const Register = () => {
             Register
           </button>
         </form>
-        </div>
+      
       </div>
       );
 };
