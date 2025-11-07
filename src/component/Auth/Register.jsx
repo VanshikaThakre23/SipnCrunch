@@ -19,7 +19,7 @@ const Register = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/auth/register", //replace your node host
+        "https://sipncrunch-backend-buop.onrender.com/api/auth/register", //replace your node host
         formData,
         { headers: { "Content-Type": "application/json" } }
       );
