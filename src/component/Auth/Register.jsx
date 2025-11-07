@@ -15,7 +15,7 @@ const Register = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => { 
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const res = await axios.post(
@@ -33,51 +33,53 @@ const Register = () => {
   };
 
   return (
-    <div className="container m-auto py-5 " style={{ maxWidth: "500px" }}>
-      <h2 className="text-center mb-4 mt-5" >Create an Account</h2>
-      <form onSubmit={handleSubmit} className="card p-4 shadow-sm">
-        <div className="mb-3">
-          <label className="form-label">Full Name</label>
-          <input
-            type="text"
-            name="name"
-            className="form-control"
-            value={formData.name}
-            onChange={handleChange}
-            required
-            placeholder="Enter your name"
-          />
+    <div className="auth-container m-auto py-5 " style={{ maxWidth: "500px" }}>
+      <div className="auth-card">
+        <h2 className="text-center mb-4 mt-5" >Create an Account</h2>
+        <form onSubmit={handleSubmit} className="card p-4 shadow-sm">
+          <div className="mb-3">
+            <label className="form-label">Full Name</label>
+            <input
+              type="text"
+              name="name"
+              className="form-control"
+              value={formData.name}
+              onChange={handleChange}
+              required
+              placeholder="Enter your name"
+            />
+          </div>
+          <div className="mb-3">
+            <label className="form-label">Email address</label>
+            <input
+              type="email"
+              name="email"
+              className="form-control"
+              value={formData.email}
+              onChange={handleChange}
+              required
+              placeholder="Enter your email"
+            />
+          </div>
+          <div className="mb-3">
+            <label className="form-label">Password</label>
+            <input
+              type="password"
+              name="password"
+              className="form-control"
+              value={formData.password}
+              onChange={handleChange}
+              required
+              placeholder="Enter password"
+            />
+          </div>
+          <button type="submit" className="btn btn-danger w-100">
+            Register
+          </button>
+        </form>
         </div>
-        <div className="mb-3">
-          <label className="form-label">Email address</label>
-          <input
-            type="email"
-            name="email"
-            className="form-control"
-            value={formData.email}
-            onChange={handleChange}
-            required
-            placeholder="Enter your email"
-          />
-        </div>
-        <div className="mb-3">
-          <label className="form-label">Password</label>
-          <input
-            type="password"
-            name="password"
-            className="form-control"
-            value={formData.password}
-            onChange={handleChange}
-            required
-            placeholder="Enter password"
-          />
-        </div>
-        <button type="submit" className="btn btn-danger w-100">
-          Register
-        </button>
-      </form>
-    </div>
-  );
+      </div>
+      );
 };
 
-export default Register;
+      export default Register;
