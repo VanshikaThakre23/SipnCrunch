@@ -44,7 +44,7 @@ function App() {
 
         <Navbar />
         <Routes>
-          {/* 🏠 Home Route */}
+          {/*  Home page ka Route */}
           <Route path="/" element={
             <>
               <Hero />
@@ -61,19 +61,19 @@ function App() {
 
            <Route path="/advice" element={<FoodAdvice/>} />
 
-          {/* 🍱 Food Page Route */}
+          {/*  Food Page Route */}
           <Route path="/foodpage" element={<FoodPage />} />
 
 
-          {/* 🍱 Food Page Route */}
+          {/*  Food Page Route */}
           <Route path="/drinkpage" element={<DrinkPage />} />
 
-          {/* 🛍 My Orders */}
+          {/*  My Orders */}
           <Route path="/myorders" element={<MyOrders />} />
 
             <Route path="/wishlist" element={<MyWishlist />} />
 
-          {/* 🔐 Auth Routes */}
+          {/* Auth Routes */}
           <Route path="/login" element={<Login />} />
          
       <Route path="/register" element={<Register />} />
