@@ -29,7 +29,7 @@ const Checkout = () => {
       return;
     }
 
-    alert(`🎉 Order placed successfully via ${formData.payment.toUpperCase()}!`);
+    alert(` Order placed successfully via ${formData.payment.toUpperCase()}!`);
     navigate("/"); // redirect back to homepage or success page
   };
 

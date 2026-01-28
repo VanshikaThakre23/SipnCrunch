@@ -169,45 +169,45 @@ const Navbar = () => {
             )}
 
             {/* ✅ Auth-based Buttons */}
-         {user ? (
-  <>
-    <li className="nav-item">
-      <Link
-        className="nav-link text-success fw-semibold"
-        to="/profile"
-        onClick={() => setIsOpen(false)}
-      >
-        Hi, {user.name.split(" ")[0]}
-      </Link>
-    </li>
-    <li className="nav-item">
-      <button className="btn nav-link ms-2" onClick={handleLogout}>
-        Logout
-      </button>
-    </li>
-  </>
-) : (
-  <>
-    <li className="nav-item">
-      <Link
-        className="nav-link ms-2"
-        to="/login"
-        onClick={() => setIsOpen(false)}
-      >
-        Login
-      </Link>
-    </li>
-    <li className="nav-item">
-      <Link
-        className="nav-link ms-2"
-        to="/register"
-        onClick={() => setIsOpen(false)}
-      >
-        SignUp
-      </Link>
-    </li>
-  </>
-)}
+            {user ? (
+              <>
+                <li className="nav-item">
+                  <Link
+                    className="nav-link text-success fw-semibold"
+                    to="/profile"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Hi, {user.name.split(" ")[0]}
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <button className="btn nav-link ms-2" onClick={handleLogout}>
+                    Logout
+                  </button>
+                </li>
+              </>
+            ) : (
+              <>
+                <li className="nav-item">
+                  <Link
+                    className="nav-link ms-2"
+                    to="/login"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Login
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    className="nav-link ms-2"
+                    to="/register"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    SignUp
+                  </Link>
+                </li>
+              </>
+            )}
 
           </ul>
         </div>

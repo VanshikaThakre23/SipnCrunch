@@ -93,7 +93,6 @@ const FoodSection = () => {
           ease: "sine.inOut",
       
       })
-      
           },[])
       
 

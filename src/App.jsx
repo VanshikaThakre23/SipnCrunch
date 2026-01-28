@@ -24,23 +24,28 @@ import Profile from "./component/Auth/Profile";
 import Checkout from "./component/Checkout";
 import { AppProviders } from "./context/AppProvider";
 
+// admin page Routes
+
+
 import "./App.css";
+
+
 
 
 function App() {
   return (
     <AppProviders>
       <Router>
-<ToastContainer
-  position="top-right"
-  autoClose={2000}
-  hideProgressBar={false}
-  closeOnClick
-  pauseOnHover={false}
-  draggable={false}
-  theme="colored"
-  style={{ zIndex: 9999, marginTop: "70px" }}
-/>
+        <ToastContainer
+          position="top-right"
+          autoClose={2000}
+          hideProgressBar={false}
+          closeOnClick
+          pauseOnHover={false}
+          draggable={false}
+          theme="colored"
+          style={{ zIndex: 9999, marginTop: "70px" }}
+        />
 
         <Navbar />
         <Routes>
@@ -59,7 +64,7 @@ function App() {
 
           <Route path="/about" element={<AboutSection />} />
 
-           <Route path="/advice" element={<FoodAdvice/>} />
+          <Route path="/advice" element={<FoodAdvice />} />
 
           {/*  Food Page Route */}
           <Route path="/foodpage" element={<FoodPage />} />
@@ -71,17 +76,36 @@ function App() {
           {/*  My Orders */}
           <Route path="/myorders" element={<MyOrders />} />
 
-            <Route path="/wishlist" element={<MyWishlist />} />
+          <Route path="/wishlist" element={<MyWishlist />} />
 
           {/* Auth Routes */}
           <Route path="/login" element={<Login />} />
-         
-      <Route path="/register" element={<Register />} />
+
+          <Route path="/register" element={<Register />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/checkout" element={<Checkout />} />
 
+          {/* admin routes------------------------------ */}
+          {/* <Route path="/admin/dashboard" element={
+            <AdminRoute> <Dashboard /> </AdminRoute>} />
+
+          <Route path="/admin/products" element={
+            <AdminRoute><Products /></AdminRoute>} />
+
+          <Route path="/admin/users" element={
+            <AdminRoute><Users/></AdminRoute>
+          }></Route>
+
+          <Route path="/admin/orders" element={
+            <AdminRoute><Orders/></AdminRoute>
+          }></Route> */}
+
+
+
+
         </Routes>
 
+        
         {/* Always visible Footer */}
         <Footer />
       </Router>

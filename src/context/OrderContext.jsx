@@ -6,7 +6,7 @@ export const OrderProvider = ({ children }) => {
   const [orders, setOrders] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
 
-  // ✅ Load user from localStorage and update cart accordingly
+  //  Load user from localStorage and update cart accordingly
   const loadCartForUser = (user) => {
     if (user) {
       const userKey = `orders_${user.email}`;
@@ -25,7 +25,7 @@ export const OrderProvider = ({ children }) => {
     loadCartForUser(user);
   }, []);
 
-  // ✅ Listen for login/logout events (triggered in AuthContext)
+  //  Listen for login/logout events (triggered in AuthContext)
   useEffect(() => {
     const handleStorageChange = () => {
       const storedUser = localStorage.getItem("user");
@@ -38,14 +38,14 @@ export const OrderProvider = ({ children }) => {
     return () => window.removeEventListener("storage", handleStorageChange);
   }, []);
 
-  // ✅ Save cart in correct place when updated
+  //  Save cart in correct place when updated
   useEffect(() => {
     if (currentUser) {
       localStorage.setItem(`orders_${currentUser.email}`, JSON.stringify(orders));
     }
   }, [orders, currentUser]);
 
-  // ✅ Add item
+  //  Add item
   const addToOrders = (item) => {
     const numericPrice =
       typeof item.price === "string"
@@ -66,12 +66,12 @@ export const OrderProvider = ({ children }) => {
     });
   };
 
-  // ✅ Remove item
+  //  Remove item
   const removeFromOrders = (id) => {
     setOrders((prevOrders) => prevOrders.filter((item) => item.id !== id));
   };
 
-  // ✅ Update quantity
+  //  Update quantity
   const updateQuantity = (id, action) => {
     setOrders((prevOrders) =>
       prevOrders.map((item) => {
@@ -87,7 +87,7 @@ export const OrderProvider = ({ children }) => {
     );
   };
 
-  // ✅ Get total
+  //  Get total
   const getTotalPrice = () => {
     const total = orders.reduce((sum, item) => {
       const price =
@@ -99,7 +99,7 @@ export const OrderProvider = ({ children }) => {
     return total.toFixed(2);
   };
 
-  // ✅ Clear cart manually (use this in logout)
+  //  Clear cart manually (use this in logout)
   const clearOrders = () => {
     setOrders([]);
   };

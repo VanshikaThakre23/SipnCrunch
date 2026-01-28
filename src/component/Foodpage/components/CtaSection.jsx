@@ -2,6 +2,7 @@ import React from "react";
 import "./CtaSection.css";
 
 const CtaSection = () => {
+  
   return (
     <section className="cta-section" data-aos="fade-up">
       <div className="cta-container">
