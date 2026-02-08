@@ -27,9 +27,11 @@ const Register = () => {
       toast.success(res.data.message || "Registered successfully");
       navigate("/login");
     } catch (err) {
-      const msg = err.response?.data?.message || "Registration failed";
-      toast.error(msg);
-    }
+  console.error("Full error:", err.response); // logs all backend details
+  const msg = err.response?.data?.message || "Registration failed";
+  toast.error(msg);
+}
+
   };
 
   return (
