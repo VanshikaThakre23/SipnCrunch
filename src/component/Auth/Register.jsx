@@ -31,7 +31,6 @@ const Register = () => {
   const msg = err.response?.data?.message || "Registration failed";
   toast.error(msg);
 }
-
   };
 
   return (
