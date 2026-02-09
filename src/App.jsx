@@ -85,27 +85,9 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/checkout" element={<Checkout />} />
 
-          {/* admin routes------------------------------ */}
-          {/* <Route path="/admin/dashboard" element={
-            <AdminRoute> <Dashboard /> </AdminRoute>} />
-
-          <Route path="/admin/products" element={
-            <AdminRoute><Products /></AdminRoute>} />
-
-          <Route path="/admin/users" element={
-            <AdminRoute><Users/></AdminRoute>
-          }></Route>
-
-          <Route path="/admin/orders" element={
-            <AdminRoute><Orders/></AdminRoute>
-          }></Route> */}
-
-
-
-
         </Routes>
 
-        
+
         {/* Always visible Footer */}
         <Footer />
       </Router>

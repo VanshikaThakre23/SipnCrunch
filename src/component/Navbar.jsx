@@ -110,7 +110,7 @@ const Navbar = () => {
                       to="/myorders"
                       onClick={() => setIsOpen(false)}
                     >
-                      <i className="fa-solid fa-shopping-cart me-2"></i> My Orders
+                      <i className="fa-solid fa-shopping-cart me-2"></i> Cart
                     </Link>
                   </li>
                   <li>
