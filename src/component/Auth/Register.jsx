@@ -18,7 +18,7 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Sending form data:", formData);
+    //console.log("Sending form data:", formData);
 
     try {
       const res = await API.post("/auth/register", formData);
@@ -26,7 +26,7 @@ const Register = () => {
       toast.success(res.data.message || "Registered successfully");
       navigate("/login");
     } catch (err) {
-      console.error("Register error:", err.response?.data || err.message);
+      //console.error("Register error:", err.response?.data || err.message);
       toast.error(err.response?.data?.message || "Registration failed");
     }
   };
