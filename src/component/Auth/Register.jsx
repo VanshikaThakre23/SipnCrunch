@@ -1,13 +1,14 @@
 import React, { useState } from "react";
-import axios from "axios";
-//import API from "../../api/axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
+import API from "../../api/axios";
 
-const Register = () => {
+const Login = () => {
   const navigate = useNavigate();
+  const { login } = useAuth();
+
   const [formData, setFormData] = useState({
-    name: "",
     email: "",
     password: "",
   });
@@ -21,74 +22,63 @@ const Register = () => {
     console.log("Sending form data:", formData);
 
     try {
+      const res = await API.post("/auth/login", formData);
 
-      const res = await axios.post(
-        "http://localhost:5000/api/auth/register",
-        formData,
-        { headers: { "Content-Type": "application/json" } }
-      );
+      const { user, token } = res.data;
 
+      if (!user || !token) {
+        toast.error("Invalid response from server");
+        return;
+      }
 
-      // const res = await API.post("/auth/register", formData);
-
-
-      toast.success(res.data.message || "Registered successfully");
-      navigate("/login");
+      login(user, token);
+      toast.success(`Welcome back, ${user.name}`);
+      navigate("/");
     } catch (err) {
-      console.error("Full error:", err.response); // logs all backend details
-      const msg = err.response?.data?.message || "Registration failed";
-      toast.error(msg);
+      console.error("Login error:", err.response?.data || err.message);
+      toast.error(err.response?.data?.message || "Login failed");
     }
   };
 
   return (
-    <div className="container m-auto py-5 " style={{ maxWidth: "500px" }}>
+    <div className="auth-container">
+      <div className="auth-card">
+        <h2>Login</h2>
 
-      <h2 className="text-center mb-4 mt-5" >Create an Account</h2>
-      <form onSubmit={handleSubmit} className="card p-4 shadow-sm">
-        <div className="mb-3">
-          <label className="form-label">Full Name</label>
-          <input
-            type="text"
-            name="name"
-            className="form-control"
-            value={formData.name}
-            onChange={handleChange}
-            required
-            placeholder="Enter your name"
-          />
-        </div>
-        <div className="mb-3">
-          <label className="form-label">Email address</label>
-          <input
-            type="email"
-            name="email"
-            className="form-control"
-            value={formData.email}
-            onChange={handleChange}
-            required
-            placeholder="Enter your email"
-          />
-        </div>
-        <div className="mb-3">
-          <label className="form-label">Password</label>
-          <input
-            type="password"
-            name="password"
-            className="form-control"
-            value={formData.password}
-            onChange={handleChange}
-            required
-            placeholder="Enter password"
-          />
-        </div>
-        <button type="submit" className="btn btn-danger w-100">
-          Register
-        </button>
-      </form>
+        <form onSubmit={handleSubmit}>
+          <div className="mb-3">
+            <label>Email</label>
+            <input
+              type="email"
+              name="email"
+              className="form-control"
+              value={formData.email}
+              onChange={handleChange}
+              required
+              placeholder="Enter your email"
+            />
+          </div>
 
+          <div className="mb-3">
+            <label>Password</label>
+            <input
+              type="password"
+              name="password"
+              className="form-control"
+              value={formData.password}
+              onChange={handleChange}
+              required
+              placeholder="Enter your password"
+            />
+          </div>
+
+          <button type="submit" className="btn btn-success w-100">
+            Login
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
 
-export default Register;
+export default Login;
